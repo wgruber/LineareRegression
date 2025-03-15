@@ -296,7 +296,7 @@ $$s_b = \frac{s_e}{\sqrt{ \sum_{i=1}^{n} (x_i - \bar{x})^2}}$$
 Die Nullhypothese lautet:
 
 $$H_0: \beta = \beta_0$$
-## Bewertung des Modells - ANOVA  {-}
+## Bewertung des Modells - ANOVA {-}
 
 Um zu testen, ob das Modell sich im Vergleich zum \textit{Mittelwertsmodell} signifikant unterscheidet, also ob es hinsichtlich der aufgeklärten Varianz der abhängigen Variablen bedeutsam besser ist, kann man die folgende ANOVA-Tabelle verwenden.
 
@@ -333,12 +333,52 @@ Um zu testen, ob das Modell sich im Vergleich zum \textit{Mittelwertsmodell} sig
 
 Wenn die ANOVA ein signifikantes Ergebnis liefert, wie es in vorliegender Fall auch zutrifft ($F(1,98) = 166, p < .001$), kann man von einer signifikant besseren Modell als das Mittelwertsmodell ausgehen.
 
+![Quadratsummen](images/Regression.jpg)
+
 Erläuterung der Quadratsummen in der ANOVA-Tabelle:
 
 - Totale-Quadratsumme (LD sumsq + Residuals sum_Sq): die quadrierte Summe der Differenzen zwischen beobachteten Werten und dem Mittelwert, also $QS_{Total} = \sum (y_i - \bar{y})^2$
 - Fehler-Quadratsumme (Residual sumsq): die Summe der Differenzen zwischen beobachteten Werten und vorhergesagten Werten, also $QS_{Fehler} = \sum (y_i - \hat{y}_i)^2$
 - Modell-Quadratsumme (LD sumsq): die Summe der Differenzen zwischen vorhergesagten Werten und dem Mittelwert, also $QS_{Modell} = \sum (\hat{y}_i - \bar{y})^2$
 
+Mit den Ergebnissen der ANOVA lassen sich folgende Fragen beantworten:
+
+- Welcher Anteil der Gesamtvariabilität $QS_{Total}$ wird durch das Modell $QS_{Modell}$ erklärt?
+- In welchem Verhältnis steht die durch das Modell aufgeklärte Varianz $MQS_{Modell}$ (mittlerer Quadratsumme des Modells) zur nicht aufgeklärten Varianz $MQS_{Fehler}$ (mittlerer Quadratsumme des Fehlers)?
+
+***Frage 1:***
+
+$$R^2 = \frac{QS_{Modell}}{QS_{Total}} \hspace{.5cm}$$ 
+
+Das entspricht also dem bereits bekannten Determinationskoeffizienten, also der aufgeklärten Varianz.
+
+***Frage 2***
+
+$$MQS_{Modell} = \frac{QS_{Modell}}{df_{Modell}} \textrm{ und } MQS_{Fehler} = \frac{QS_{Fehler}}{df_{Fehler}}$$
+$$df_{Modell} = 1 \\ df_{Fehler} = N - p$$
+
+ mit $p = $ Anzahl der verwendeten Parameter $b_0$ und $b_1$, also 2.
+
+
+***Teststatistik***
+
+$$F = \frac{MQS_{Modell}}{MQS_{Fehler}}$$
+
+## Konfidenzintervalle {-}
+
+Für den Interzept gilt:
+
+$$\textrm{untere Grenze} = b_0 - t_{df;1-\alpha/2} \cdot s_b$$
+$$\textrm{obere Grenze}  = b_0 + t_{df;1-\alpha/2} \cdot s_b$$
+
+Für die Steigung gilt:
+
+$$\textrm{untere Grenze} = b_1 - t_{df;1-\alpha/2} \cdot s_b$$
+$$\textrm{obere Grenze}  = b_1 + t_{df;1-\alpha/2} \cdot s_b$$
+
+***Erkenntnis:***
+
+Der Signifikanztest $H_0: \beta = 0$ führt bei zweiseitiger Testung dann zu einem nicht-signifikanten Ergebnis, wenn das $1- \alpha$ Konfidenzintervall den Wert null enthält (z.B. $KI_{b_1} = [-0.2, 0.4]$).
 
 
 

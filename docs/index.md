@@ -23,7 +23,7 @@ link-citations: true
 
 
 
-# Einführung in die Einfache Lineare Regression {-}
+# Einfache Lineare Regression {-}
 
 Dieses Skript basiert (großteils) auf der Literatur von Andy Field und Rand Wilcox [@FieldWilcox.2017], David Erceg-Hurn et.al. [@Hurn.2008], Mair [@Mair.2020] and Wilcox [@Wilcox.2012]. Teile des Inhaltes wurden direkt aus der genannten Literatur übernommen.
 
