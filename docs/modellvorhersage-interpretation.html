@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Modellvorhersage &amp; Interpretation | Lineare Regression</title>
+  <meta name="description" content="Einfache lineare Regression mit einem Prädiktor" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Modellvorhersage &amp; Interpretation | Lineare Regression" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/Images/Cover.png" />
+  <meta property="og:description" content="Einfache lineare Regression mit einem Prädiktor" />
+  <meta name="github-repo" content="wgruber/LineareRegression" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Modellvorhersage &amp; Interpretation | Lineare Regression" />
+  
+  <meta name="twitter:description" content="Einfache lineare Regression mit einem Prädiktor" />
+  <meta name="twitter:image" content="/Images/Cover.png" />
+
+<meta name="author" content="Walter Gruber" />
+
+
+<meta name="date" content="2025-03-15" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="das-einfache-lineare-modell.html"/>
+<link rel="next" href="signifikanztests.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="index.html#section" id="toc-section"></a></li>
+<li class="chapter" data-level="" data-path="einführung-in-die-einfache-lineare-regression.html"><a href="einführung-in-die-einfache-lineare-regression.html"><i class="fa fa-check"></i>Einführung in die Einfache Lineare Regression</a>
+<ul>
+<li class="chapter" data-level="" data-path="einführung-in-die-einfache-lineare-regression.html"><a href="einführung-in-die-einfache-lineare-regression.html#vorwort"><i class="fa fa-check"></i>Vorwort</a></li>
+<li class="chapter" data-level="" data-path="einführung-in-die-einfache-lineare-regression.html"><a href="einführung-in-die-einfache-lineare-regression.html#ziele"><i class="fa fa-check"></i>Ziele</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="das-einfache-lineare-modell.html"><a href="das-einfache-lineare-modell.html"><i class="fa fa-check"></i>Das einfache lineare Modell</a>
+<ul>
+<li class="chapter" data-level="" data-path="das-einfache-lineare-modell.html"><a href="das-einfache-lineare-modell.html#fehlerterm"><i class="fa fa-check"></i>Fehlerterm</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html"><i class="fa fa-check"></i>Modellvorhersage &amp; Interpretation</a>
+<ul>
+<li class="chapter" data-level="" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#beispiel"><i class="fa fa-check"></i>Beispiel</a></li>
+<li class="chapter" data-level="" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#korrelationregression"><i class="fa fa-check"></i>Korrelation/Regression</a></li>
+<li class="chapter" data-level="" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#eigenschaften-der-gerade"><i class="fa fa-check"></i>Eigenschaften der Gerade</a></li>
+<li class="chapter" data-level="" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#beta-gewichte"><i class="fa fa-check"></i>Beta-Gewichte</a></li>
+<li class="chapter" data-level="" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#residuen"><i class="fa fa-check"></i>Residuen</a></li>
+<li class="chapter" data-level="" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#standardschätzfehler"><i class="fa fa-check"></i>Standardschätzfehler</a></li>
+<li class="chapter" data-level="" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#determinationskoeffizient"><i class="fa fa-check"></i>Determinationskoeffizient</a></li>
+<li class="chapter" data-level="" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#venn-diagramm"><i class="fa fa-check"></i>Venn Diagramm</a></li>
+<li class="chapter" data-level="" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#multiple-regression"><i class="fa fa-check"></i>Multiple Regression</a></li>
+<li class="chapter" data-level="" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#eigenschaften-des-determinationskoeffizienten"><i class="fa fa-check"></i>Eigenschaften des Determinationskoeffizienten</a></li>
+<li class="chapter" data-level="" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#ascombe-quartett"><i class="fa fa-check"></i>Ascombe-Quartett</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="signifikanztests.html"><a href="signifikanztests.html"><i class="fa fa-check"></i>Signifikanztests</a>
+<ul>
+<li class="chapter" data-level="" data-path="signifikanztests.html"><a href="signifikanztests.html#voraussetzungen"><i class="fa fa-check"></i>Voraussetzungen</a></li>
+<li class="chapter" data-level="" data-path="signifikanztests.html"><a href="signifikanztests.html#graphisches-prüfen-der-voraussetzungen"><i class="fa fa-check"></i>Graphisches prüfen der Voraussetzungen</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html"><i class="fa fa-check"></i>Berechnung des Modells in <strong>R</strong></a>
+<ul>
+<li class="chapter" data-level="" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#koeffizienten"><i class="fa fa-check"></i>Koeffizienten</a>
+<ul>
+<li class="chapter" data-level="" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#formale-interpretation"><i class="fa fa-check"></i>Formale Interpretation</a></li>
+<li class="chapter" data-level="" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#inhaltliche-interpretation"><i class="fa fa-check"></i>Inhaltliche Interpretation</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#hypothesen"><i class="fa fa-check"></i>Hypothesen</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="kategorieller-prädiktor.html"><a href="kategorieller-prädiktor.html"><i class="fa fa-check"></i>Kategorieller Prädiktor</a>
+<ul>
+<li class="chapter" data-level="" data-path="kategorieller-prädiktor.html"><a href="kategorieller-prädiktor.html#mehrstufiger-kategorieller-prädiktoren"><i class="fa fa-check"></i>Mehrstufige(r) kategorielle(r) Prädiktor(en)</a></li>
+<li class="chapter" data-level="" data-path="kategorieller-prädiktor.html"><a href="kategorieller-prädiktor.html#dummy-kodierung"><i class="fa fa-check"></i>Dummy Kodierung</a></li>
+<li class="chapter" data-level="" data-path="kategorieller-prädiktor.html"><a href="kategorieller-prädiktor.html#modelle-mit-kategoriellen-variablen"><i class="fa fa-check"></i>Modelle mit kategoriellen Variablen</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referenzen.html"><a href="referenzen.html"><i class="fa fa-check"></i>Referenzen</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Lineare Regression</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="modellvorhersage-interpretation" class="section level1 unnumbered hasAnchor">
+<h1>Modellvorhersage &amp; Interpretation<a href="modellvorhersage-interpretation.html#modellvorhersage-interpretation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Das <span class="math inline">\(b_0\)</span> wird auch konstanter Term, oder Interzept genannt. Es ist jener <span class="math inline">\(y\)</span>-Wert, der durch das Modell für die Stelle <span class="math inline">\(x = 0\)</span> vorhergesagt wird. Damit ist es auch jener Punkt auf der <span class="math inline">\(y\)</span>-Achse, durch welche die Gerade geht.</p>
+<p>Inhaltlich entspricht dieser Wert dem vorhergesagtem Wert des Kriteriums <span class="math inline">\(\hat{y}\)</span> an dem der Prädiktor <span class="math inline">\(x\)</span> den Wert Null hat. Für unser Beispiel also jener Lernerfolg, der durch 0 Stunden Lernen zu erwarten wäre.</p>
+<p>Die Steigung gibt die erwartete Veränderung des Kriteriums <span class="math inline">\(\hat{y}\)</span> an, die einer Erhöhung des Prädiktors <span class="math inline">\(x\)</span> um einen Einheit entspricht.</p>
+<div id="beispiel" class="section level2 unnumbered hasAnchor">
+<h2>Beispiel<a href="modellvorhersage-interpretation.html#beispiel" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Der Lernerfolg <span class="math inline">\(\hat{y}\)</span> soll durch die Anzahl der Stunden für die Vorbereitung zur Klausur <span class="math inline">\(x\)</span> vorhergesagt werden. Sei <span class="math inline">\(b_0 = 10\)</span> und <span class="math inline">\(b_1 = 3\)</span>. Die Regressionsgleichung lautet daher:</p>
+<p><span class="math display">\[\hat{y} = 10 + 3 \cdot x\]</span></p>
+<p>Hat jemand <span class="math inline">\(x = 0\)</span> Stunden gelernt, wird anhand des Modells ein Lernerfolg von 10 vorhergesagt. Bei einem Lernaufwand von <span class="math inline">\(x = 1\)</span> Stunde, würde das Modell einen Lernerfolg von <span class="math inline">\(\hat{y} = 13\)</span>, also eine um 3 Einheiten besseren Lernerfolg vorhersagen.</p>
+<p>In vielen Fällen ist jedoch eine Vorhersage eines <span class="math inline">\(\hat{y}\)</span>-Werte bei einem <span class="math inline">\(x = 0\)</span> nicht sinnvoll. Würde man z.B. den Lernerfolg mit Intelligenz vorhersagen und wären z.B. die aus beobachteten Daten ermittelten Koeffizienten <span class="math inline">\(b_0 = -9\)</span> und <span class="math inline">\(b_1 = 0.2\)</span>, dann würde der Lernerfolg bei einer Intelligenz von <span class="math inline">\(x = 0\)</span> dem Wert <span class="math inline">\(\hat{y} = -9\)</span> vorhersagen. Das wäre aber offensichtlich eine unbrauchbare Vorhersage, da es einerseits keinen negativen Lernerfolg gibt und auf einer herkömmlichen IQ-Skala der Wert <span class="math inline">\(x = 0\)</span> auch keine Bedeutung hat.</p>
+</div>
+<div id="korrelationregression" class="section level2 unnumbered hasAnchor">
+<h2>Korrelation/Regression<a href="modellvorhersage-interpretation.html#korrelationregression" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Zusammenhang Korrelation und Regression:</p>
+<p><span class="math display">\[b_1 = r(x,y) \cdot \frac{s_y}{s_x}\]</span></p>
+<p>Daraus leiten sich folgende Erkenntnisse ab:</p>
+<ul>
+<li>Die Steigung ist positiv (negativ), wenn die Korrelation positiv (negativ) ist.</li>
+<li>Ist die Korrelation null, dann ist auch die Steigung null (Gerade ist parallel zur <span class="math inline">\(x\)</span>-Achse)</li>
+<li><span class="math inline">\(b\)</span> ist abhängig von <span class="math inline">\(s_x\)</span> und <span class="math inline">\(s_y\)</span>. Daher führt eine Änderung der Messeinheit in einer der beiden Variablen auch zu einer Änderung der Steigung!</li>
+<li>Aus voriger Folgerung kann man erkennen, dass <span class="math inline">\(b\)</span> kein standardisiertes Maß für den Einfluß von <span class="math inline">\(x\)</span> auf <span class="math inline">\(y\)</span></li>
+<li><span class="math inline">\(b\)</span> ist direkt proportional zu <span class="math inline">\(r\)</span></li>
+</ul>
+</div>
+<div id="eigenschaften-der-gerade" class="section level2 unnumbered hasAnchor">
+<h2>Eigenschaften der Gerade<a href="modellvorhersage-interpretation.html#eigenschaften-der-gerade" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Folgende Eigenschaften der Regressionsgeraden sind bemerkenswert:</p>
+<ul>
+<li>eine zur <span class="math inline">\(x\)</span>-Achse parallele Gerade bedeutet, dass kein Zusammenhang zwischen den beiden Variablen besteht. Für jeden beliebigen Wert des Prädiktors <span class="math inline">\(x\)</span> wird stets der gleiche <span class="math inline">\(y\)</span>-Wert (Kriterium) vorhergesagt.</li>
+<li>eine nach rechts oben steigend bedeutet, dass mit Zunahme der Werte des Prädiktors auch die Werte des Kriteriums steigen und damit eine Abhängigkeit der beiden Variablen gegeben ist (positiver Zusammenhang).</li>
+<li>eine nach rechts fallende bedeutet, dass mit Zunahme der Werte des Prädiktors die Werte des Kriteriums fallen und damit ebenfalls eine Abhängigkeit der beiden Variablen gegeben ist (negativer Zusammenhang).</li>
+<li>die Regressionsgerade wurde aus den Daten einer Stichprobe berechnet.
+<ul>
+<li>Die Parameter der Regressionsgerade <span class="math inline">\(b_0, b_1, s_b\)</span> sind Schätzwerte der in der Population vorhandenen Parameter <span class="math inline">\(\beta_0, \beta_1, \sigma_b\)</span>.</li>
+</ul></li>
+</ul>
+</div>
+<div id="beta-gewichte" class="section level2 unnumbered hasAnchor">
+<h2>Beta-Gewichte<a href="modellvorhersage-interpretation.html#beta-gewichte" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Werden die in die Regression eingehenden Variablen (Kriterium und Prädiktorvariable(n)) vor Berechnung der Koeffizienten z-transformiert, erhält man standardisierte Koeffizienten. Diese Koeffizienten werden allegemein auch als <strong>Beta-Gewichte</strong> (<strong>B_1</strong>, oder <span class="math inline">\(\beta_1\)</span>) bezeichnet. Es gilt:</p>
+<p><span class="math display">\[\hat{z}_y = B_0 + B_1 \cdot z_x\]</span></p>
+<p>Auch für das <span class="math inline">\(B_1\)</span> besteht ein direkt proportionaler Zusammenhang der Steigung zur Korrelation:</p>
+<p><span class="math display">\[B_1 = r(z_x, z_y) \cdot \frac{s_{z_y}}{s_{z_x}} = r(x, y) \cdot \frac{1}{1} = r\]</span>
+Wie halten folgende wichtige Zusammenhänge zwischen <span class="math inline">\(r(x,y)\)</span> und <span class="math inline">\(B_j\)</span> fest:</p>
+<ul>
+<li>Die Korrelation <span class="math inline">\(r(x,y)\)</span> und der standardisierte Steigungskoeffizient <span class="math inline">\(B\)</span> sind identisch.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></li>
+<li>Beide Maße (<span class="math inline">\(r(x,y)\)</span> und <span class="math inline">\(B\)</span>) sind unabhängig von der Messeinheit der beiden Variablen.</li>
+<li><span class="math inline">\(B\)</span> und damit auch <span class="math inline">\(r(x,y)\)</span> zeigen den Effekt, den die Änderung des Prädiktors um eine Standardabweichung auf das z-transformierte Kriterium hat.</li>
+<li><span class="math inline">\(r\)</span> ist somit eine Maßzahl, die bei Regressionsmodellen die Effektstärke widerspiegelt.</li>
+<li>Nach Cohen gelten folgende Richtwerte: <span class="math inline">\(r = 0.1\)</span> entspricht einem kleinen, <span class="math inline">\(r = 0.3\)</span> entspricht einem mittleren und <span class="math inline">\(r = 0.5\)</span> entspricht einem starken Effekt.</li>
+<li>der <span class="math inline">\(\beta\)</span>-Koeffizient gibt an, wie viele Standardabweichungen sich die abhängige Variable ändert, wenn sich die unabhängige Variable um eine Standardabweichung ändert. Ein <span class="math inline">\(\beta\)</span>-Wert von 0.5 bedeutet beispielsweise, dass eine Erhöhung der unabhängigen Variable um eine Standardabweichung zu einem Anstieg der abhängigen Variable um 0.5 Standardabweichungen führt.</li>
+<li>da die Koeffizienten standardisiert sind, kann das <span class="math inline">\(\beta\)</span> über verschiedene Modelle hinweg direkt verglichen werden, was hilfreich ist, wenn man wissen möchte, welcher Prädiktor den stärksten Einfluss hat (insbesondere in einer multiplen Regressionsanalyse).</li>
+<li>während der <span class="math inline">\(\beta\)</span>-Koeffizient die Stärke und Richtung der Beziehung zwischen zwei Variablen beschreibt, impliziert er <ins><em>keine Kausalität</em></ins>.</li>
+</ul>
+</div>
+<div id="residuen" class="section level2 unnumbered hasAnchor">
+<h2>Residuen<a href="modellvorhersage-interpretation.html#residuen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Eigenschaften von Residuen:</p>
+<ul>
+<li>Die <span class="math inline">\(\varepsilon_i\)</span> enthalten Anteile der Kriteriumsvariablen <span class="math inline">\(y\)</span>, die durch die Prädiktorvariable <span class="math inline">\(x\)</span> nicht erfasst/erklärt werden.</li>
+<li>Diese Anteile bestehen aus
+<ul>
+<li>Messfehler</li>
+<li>Anteile, die evtl. durch weitere Variablen erklärt werden, die aber mit dem verwendeten Prädiktor nichts zu tun haben, also mit <span class="math inline">\(r(x,\varepsilon) = 0\)</span> korrelieren.</li>
+</ul></li>
+</ul>
+<p>Für den sogenannten gilt:</p>
+<p><span class="math display">\[s_e = \sqrt{\frac{\sum_{i=1}^{n} e_i^2}{n-2}} = \sqrt{\frac{1}{n-2} \cdot \sum_{i=1}^{n} e_i^2}\]</span></p>
+</div>
+<div id="standardschätzfehler" class="section level2 unnumbered hasAnchor">
+<h2>Standardschätzfehler<a href="modellvorhersage-interpretation.html#standardschätzfehler" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Der **Standardschätzfehler*}** (<span class="math inline">\(s_e\)</span>) (engl. standard error of estimate) bei einer Regression kennzeichnet die Streuung der <span class="math inline">\(y\)</span>-Werte um die Regressionsgerade und ist damit ein Gütemaßstab für die Genauigkeit der Regressionsvorhersagen. Je kleiner dieser Fehler, desto besser die Regressionsvorhersage.</p>
+<p>Dieser Fehler ist ein eigenes Modellgütemaß, wird aber weniger häufig als das Bestimmtheitsmaß, bzw. als Determinationskoeffizient angegeben, obwohl der Standardfehler der Residuen bei der Bewertung Anpassungsgüte möglicherweise aussagekräftiger ist (siehe Bemerkungen beim Bestimmtheitsmaß).</p>
+<ins>
+<em>Bemerkung:</em>
+</ins>
+<p>Mithilfe des Standardfehlers können Konfidenzintervalle konstruiert werden.</p>
+</div>
+<div id="determinationskoeffizient" class="section level2 unnumbered hasAnchor">
+<h2>Determinationskoeffizient<a href="modellvorhersage-interpretation.html#determinationskoeffizient" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Das Bestimmtheitsmaß, auch als <span class="math inline">\(R^2\)</span> bekannt, quantifiziert, wie gut die unabhängigen Variablen in einem linearen Regressionsmodell die Streuung der abhängigen Variable erklären, indem es den Anteil der Gesamtvarianz darstellt, der durch das Modell erklärt wird.</p>
+<p>Es ist wichtig für die Bewertung der Modellanpassung, da ein höherer <span class="math inline">\(R^2\)</span>-Wert auf eine bessere Erklärungsfähigkeit des Modells hinweist. Bei der Verwendung ist jedoch unbedingt auch auf die nachfolgend diskutierten Einschränkungen der (sinnvollen) Interpretierbarkeit diese Maßes zu achten!</p>
+<p><span class="math display">\[R^2 = \frac{\sum_{i=1}^{n} (\hat{y}_i - \bar{y})^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2} = 1- \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2}\]</span>
+in Worten:</p>
+<p><span class="math display">\[R^2 = \frac{\textrm{erklärte Variation}}{\textrm{gesamte Variation}} = 1 - \frac{\textrm{unerklärte Variation}}{\textrm{gesamte Variation}}\]</span></p>
+<p><strong>Wertebereich</strong>: das Maß nimmt den Wert 1 an, wenn <span class="math inline">\(\sum (y_i - \hat{y}_i)^2 = 0\)</span>, oder <span class="math inline">\(\sum_{i=1}^{n} (\hat{y}_i - \bar{y})^2 = \sum_{i=1}^{n} (y_i - \bar{y})^2\)</span> ist, bzw. den Wert 0, wenn <span class="math inline">\(\sum_{i=1}^{n} (\hat{y}_i - \bar{y})^2 = 0\)</span>!</p>
+<p>Wenn das Regressionsmodell kein Absolutglied enthält (es liegt ein homogenes Regressionsmodell vor), kann das Bestimmtheitsmaß negativ werden.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+</div>
+<div id="venn-diagramm" class="section level2 unnumbered hasAnchor">
+<h2>Venn Diagramm<a href="modellvorhersage-interpretation.html#venn-diagramm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Cohen und Cohen (1975) und Kennedy (1981) konnten zeigen, dass sich das Bestimmtheitsmaß graphisch mittels Venn-Diagrammen veranschaulichen lässt.</p>
+<p>Wir betrachten die Variablen Lernerfolg (<code>LE</code>) und Lerndauer (<code>LD</code>). Angenommen, ihre Korrelation beträgt <span class="math inline">\(r = 0.5\)</span>. Daraus folgt der Determinationskoeffizient mit <span class="math inline">\(r^2 = 0.5^2 = 0.25\)</span>, was 25% der Varianz erklärt. Mit anderen Worten: 25% der Varianz im Lernerfolg wird durch die Lerndauer erklärt.</p>
+<p>Damit ergibt sich aber auch zwangsläufig die Erkenntnis, dass immerhin noch 75% der Variabilität vom Lernerfolg unerklärt sind! Man könnte also davon ausgehen, dass es weitere Variablen/Merkmale gibt, die weitere Anteile dieser noch unerklärten Varianz erklären können. Ideal wären dabei eine, oder mehrere Prädiktorvariablen, die mit der Kriteriumsvariablen hoch, mit den anderen unabhängigen Variablen aber wenig bis gar nicht korrelieren, wie im nachfolgenden Graph dargestellt wird:</p>
+<p>Wie man den Angaben zur aufgeklärten Varianz entnehmen kann, beträgt die Korrelation von <span class="math inline">\(r(LE,LD) = 0.50\)</span>, <span class="math inline">\(r(LE,IQ) = 0.60\)</span> und der <span class="math inline">\(r(IQ,LD) = 0.08\)</span>. Daraus kann man sich ganz einfach die nicht aufgeklärte Varianz von <code>LE</code> errechnen. Diese ergbit sich aus <span class="math inline">\(100 - 25 - 36 = 39\)</span>.</p>
+</div>
+<div id="multiple-regression" class="section level2 unnumbered hasAnchor">
+<h2>Multiple Regression<a href="modellvorhersage-interpretation.html#multiple-regression" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Die Multiple lineare Regression ist ein statistisches Verfahren, mit dem versucht wird, eine beobachtete abhängige Variable durch mehrere unabhängige Variablen zu erklären. Die multiple lineare Regression stellt eine Verallgemeinerung der einfachen linearen Regression dar. Das Beiwort „linear“ bedeutet, dass die abhängige Variable als eine Linearkombination (nicht notwendigerweise) linearer Funktionen der unabhängigen Variablen modelliert wird (siehe Wikipedia). Dieser Themenbereich wird im Rahmen der Methodenlehre und Statistik 3 im Detail besprochen.</p>
+<p>Die Grundlegende Idee kann man jedoch bereits mit den gerade vorgestellten Venn-Diagrammen bereits gut erfassen. Für ein Modell mit 2 Prädiktoren eignet sich auch noch der Scatterplot gut, um die Eigenschaften und Zusammenhänge der Residuen und des Modells zu verstehen. Anstelle einer Linie, wird es bei 2 Prädiktoren einen Ebene. Ab 3 Prädiktoren ist der Scatterplot allerdings nicht mehr darstellbar.</p>
+</div>
+<div id="eigenschaften-des-determinationskoeffizienten" class="section level2 unnumbered hasAnchor">
+<h2>Eigenschaften des Determinationskoeffizienten<a href="modellvorhersage-interpretation.html#eigenschaften-des-determinationskoeffizienten" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Der Determinationskoeffizient wird häufig als Gütemaß eines linearen Modells verwendet. Dabei sind jedoch folgende Eigenschaften unbedingt zu berücksichtigen:</p>
+<ul>
+<li>zeigt die der linearen Approximation, jedoch nicht, ob das Modell richtig spezifiziert wurde, also ob eine lineare Anpassung überhaupt die geeignete Modellvorstellung ist.</li>
+<li>sagt nichts über die kausale Ursache des Zusammenhangs aus. Der Schluss, dass die unabhängige Variable <span class="math inline">\(x\)</span> der Grund für die Änderungen in <span class="math inline">\(y\)</span> sind kann diesem Maß nicht entnommen werden!</li>
+<li>gibt keine Auskunft über die statistische Signifikanz des ermittelten Zusammenhangs!</li>
+<li>ein hohes Bestimmtheitsmaß ist kein Beweis für ein Modell und ein niedriges Bestimmtheitsmaß bedeutet nicht, dass es sich um ein Modell handelt. Veranschaulicht wird diese Eigenschaft durch das Anscombe-Quartett, siehe nächste Folie.</li>
+</ul>
+</div>
+<div id="ascombe-quartett" class="section level2 unnumbered hasAnchor">
+<h2>Ascombe-Quartett<a href="modellvorhersage-interpretation.html#ascombe-quartett" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Bei Betrachgung der nachfolgenden Streudiagramme sieht man klar, dass die Daten und Zusammenhänge verschieden aussehen. Berechnet man die statistischen Kennzahlen, haben diese aber nahezu dieselben Werte!</p>
+<div class="float">
+<img src="Images/Anscombe-Quartet.png" alt="Alternativtext" />
+<div class="figcaption">Alternativtext</div>
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>WICHTIG: dies gilt prinzipiell für ELR, aber unter der Bedingung, dass alle verwendeten Prädiktoren voneinander unabhängig sind (also nicht korrelieren) auch für die Beta-Gewichte der multiplen Regression!}<a href="modellvorhersage-interpretation.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Normalerweise wird <span class="math inline">\(R^2\)</span> in der Formel <span class="math inline">\(R^2 = 1 - \frac{\text{SSR}}{\text{SST}}\)</span> definiert, wobei SSR (Sum of Squared Residuals) der Teil der Varianz ist, der nicht durch das Modell erklärt wird, und SST (Total Sum of Squares) die Gesamtvarianz der abhängigen Variablen darstellt. In einem gewöhnlichen linearen Regressionsmodell, das ein Absolutglied (Intercept) beinhaltet, wird das Modell der optimalen Anpassung dadurch erreicht, dass es den Datenmittelwert als Ausgangspunkt nutzt. Dadurch hat SSR im besten Fall einen geringeren Wert als SST, was zu einem positiven <span class="math inline">\(R^2\)</span> führt. Bei einem homogenen Modell ohne Absolutglied, also ohne den konstanten Term, wird das Modell gezwungen, durch den Ursprung (Nullpunkt) zu verlaufen. Dies kann die Anpassung des Modells an die Daten stark verschlechtern, insbesondere wenn die tatsächlichen Datenpunkte um einen von Null verschiedenen Mittelwert gruppiert sind. In solchen Fällen kann die Summe der quadrierten Residuen (SSR) größer werden als die Gesamtvarianz (SST), was zu einem negativen Wert von <span class="math inline">\(1 - \frac{\text{SSR}}{\text{SST}}\)</span> führt. Ein negatives <span class="math inline">\(R^2\)</span> ist eine Indikation dafür, dass das Modell schlechter abschneidet als ein einfaches Durchschnittsmodell, das lediglich den Mittelwert der abhängigen Variablen als Vorhersage nutzt.<a href="modellvorhersage-interpretation.html#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="das-einfache-lineare-modell.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="signifikanztests.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Modellbildung2.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
