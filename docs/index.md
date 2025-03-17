@@ -1,7 +1,7 @@
 ---
 title: "Lineare Regression"
 author: "Walter Gruber"
-date: "2025-03-15"
+date: "2025-03-17"
 description: "Einfache lineare Regression mit einem Prädiktor"
 cover-image: "Images/Cover.png"
 github-repo: wgruber/LineareRegression
@@ -56,3 +56,4 @@ Ziel ist es, Ihnen ein solides Verständnis für die einfache lineare Regression
 - Regression verstehen und anwenden können.
 - Interpretation von Ergebnissen und APA-konforme Berichterstattung.
 - Problembereiche der einfachen Regression verstehen und erkennen können.
+
