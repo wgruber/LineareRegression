@@ -1,7 +1,7 @@
 ---
 title: "Lineare Regression"
 author: "Walter Gruber"
-date: "2025-03-17"
+date: "2025-03-23"
 description: "Einfache lineare Regression mit einem Prädiktor"
 cover-image: "Images/Cover.png"
 github-repo: wgruber/LineareRegression

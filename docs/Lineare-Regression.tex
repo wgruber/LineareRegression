@@ -1,0 +1,992 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Lineare Regression},
+  pdfauthor={Walter Gruber},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Lineare Regression}
+\author{Walter Gruber}
+\date{2025-03-17}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\section*{}\label{section}
+\addcontentsline{toc}{section}{}
+
+\includegraphics[width=0.7\textwidth,height=\textheight]{Images/TafelFormeln.jpg}
+
+\section*{Einfache Lineare Regression}\label{einfache-lineare-regression}
+\addcontentsline{toc}{section}{Einfache Lineare Regression}
+
+Dieses Skript basiert (großteils) auf der Literatur von Andy Field und Rand Wilcox (\citeproc{ref-FieldWilcox.2017}{\&. W. Field A. P. 2017}), David Erceg-Hurn et.al. (\citeproc{ref-Hurn.2008}{Hurn 2008}), Mair (\citeproc{ref-Mair.2020}{Mair 2020}) and Wilcox (\citeproc{ref-Wilcox.2012}{Wilcox 2012}). Teile des Inhaltes wurden direkt aus der genannten Literatur übernommen.
+
+\subsection*{Vorwort}\label{vorwort}
+\addcontentsline{toc}{subsection}{Vorwort}
+
+In einer Welt, die zunehmend von Daten geprägt ist, sind statistische Methoden unverzichtbare Werkzeuge, um Muster aufzudecken und fundierte Entscheidungen zu treffen. Die einfache lineare Regression ist eine der grundlegendsten, aber zugleich wirkungsvollsten Techniken in der Statistik. Sie ermöglicht es, den Zusammenhang zwischen zwei quantitativen Variablen zu modellieren und vorherzusagen, wie sich Änderungen in einer unabhängigen Variable auf eine abhängige Variable auswirken.
+
+In diesem Kapitel werden wir die Grundlagen der einfachen linearen Regression erkunden:
+
+\begin{itemize}
+\tightlist
+\item
+  Was bedeutet es, einen linearen Zusammenhang zwischen zwei Variablen zu postulieren?
+\item
+  Wie wird ein lineares Regressionsmodell aufgestellt und interpretiert?
+\item
+  Durch anschauliche Beispiele und Schritt-für-Schritt-Anleitungen werden wir die Schlüsselkonzepte und mathematischen Grundlagen dieser Methode erläutern.
+\end{itemize}
+
+\subsection*{Ziele}\label{ziele}
+\addcontentsline{toc}{subsection}{Ziele}
+
+Ziel ist es, Ihnen ein solides Verständnis für die einfache lineare Regression zu vermitteln, das als Basis für komplexere statistische Analysen dient.
+
+\begin{itemize}
+\tightlist
+\item
+  Regressionsmodelle verstehen und anwenden.
+\item
+  Eigenschaften von Quadratsummen verstehen:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Totale Quadratsumme.
+  \item
+    Fehler- oder Residualquadratsumme.
+  \item
+    Modell Quadratsumme.
+  \end{itemize}
+\item
+  Prüf- und Kenngrößen verstehen und interpretieren:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    F-Werte.
+  \item
+    Teststatistiken wie t-Werte.
+  \item
+    Konfidenzintervalle.
+  \item
+    b-Gewichte und standardisierte Gewichte (\(\beta\)).
+  \item
+    \(R^2\) (Determinationskoeffizient, Bestimmtheitsmaß).
+  \end{itemize}
+\item
+  Voraussetzungen und deren Überprüfung bei LM.
+\item
+  Regression verstehen und anwenden können.
+\item
+  Interpretation von Ergebnissen und APA-konforme Berichterstattung.
+\item
+  Problembereiche der einfachen Regression verstehen und erkennen können.
+\end{itemize}
+
+\section*{Das einfache lineare Modell}\label{das-einfache-lineare-modell}
+\addcontentsline{toc}{section}{Das einfache lineare Modell}
+
+Formal wird ein einfaches lineares Regressionsmodell (\textbf{\emph{ELR}}) definiert durch:
+
+\[y_i = b_0 + b_1 \cdot x_i + \varepsilon_i\]
+
+mit:
+
+\begin{itemize}
+\tightlist
+\item
+  \(y_i\): Kriterium, abhängige Variable - also der beobachtete Wert des Kriteriums der \(i\)-ten Person.
+\item
+  \(b_0\): konstanter Term, intercept (Wert für \(y_i\) wenn \(x_i = 0\)).
+\item
+  \(b_1\): Steigung, regression coefficient, gradient, slope
+\item
+  \(x_i\): Prädiktor, unabhängige Variable: also der beobachtete Wert des Prädiktors der \(i\)-ten Person.
+\item
+  \(\varepsilon_i\): Fehler, error term
+\item
+  \(i\): Index für betrachteten Fall
+\end{itemize}
+
+Eine sehr bedeutende Rolle in dieser Gleichung nehmen die sogenannten \textbf{Regressionskoeffizienten} \(b_0\) und \(b_1\) ein. Man nennt diese auch die \textbf{Parameter} (= bestimmenden Elemente) der Gleichung. Sind diese Werte bekannt, kann man für jedes beliebige \(x_i \in \mathbb{R}\) einen entsprechenden \(y_i\)-Wert auf der Gerade bestimmen. Damit ist also durch diese Parameter die Lage und Steigung der Gerade eindeutig bestimmt!
+
+Will man formal jene Werte beschreiben, die durch das Modell für einen bestimmten Prädiktorwert \(x_i\) vorhergesagt werden, schreibt man:
+
+\[\hat{y}_i = b_0 + b_1 \cdot x_i\]
+
+Aus diesen beiden Darstellungsformen lässt sich eine wichtige Eigenschaft ableiten. Der beobachtete Wert des Kriteriums \(y_i\) wird in den allermeisten Fällen nicht mit dem vom linearen Modell vorhergesagten Wert \(\hat{y}_i\) übereinstimmen. Daher gilt:
+
+\[\varepsilon_i = y_i - \hat{y}_i\]
+
+Man bezeichnet das \(\varepsilon_i\) auch als \textbf{Residuum}, oder \textbf{Fehler}, oder \textbf{Fehlerterm}. Das \(\varepsilon_i\) ist also der Abstand von einem beobachteten Wert zu einem vom Modell vorhergesagten Wert an der Stelle \(x_i\).
+
+\subsection*{Fehlerterm}\label{fehlerterm}
+\addcontentsline{toc}{subsection}{Fehlerterm}
+
+Über den Fehler \(\varepsilon_i\) kann man auch die Modellannahme für die optimale Lage der Geraden innerhalb der beobachteten Wertepaare \((x_i, y_i)\) bestimmen. Eine simple und relativ leicht zu berechnende Annahme für den Fehlerterm lautet:
+
+\begin{quote}
+Die Summe der quadratischen Abweichungen sollte ein Minimum sein!
+\end{quote}
+
+\[\sum_{i=1}^{n} \varepsilon_{i}^2 = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 \rightarrow \text{Minimum}\]
+
+Setzt man für \(\hat{y}_i\) obige Gleichung ein, erhält man:
+
+\[f(b_0,b_1) = \sum_{i=1}^{n} (y_i - b_0 - b_1 \cdot x_i)^2 \rightarrow \text{Minimum}\]
+Durch partielle Ableitung und Null-setzen von \(\frac{\partial f(b_0,b_1)}{\partial b_0} = 0\) und \(\frac{\partial f(b_0,b_1)}{\partial b_1} = 0\) lassen sich die Koeffizienten bestimmen.
+
+\begin{quote}
+Diese Methode/Annahme ist unter den Namen \textbf{O}rdinary \textbf{L}east \textbf{S}quare, bzw. \textbf{MKQ} für \textbf{M}ethode der \textbf{K}leinsten \textbf{Q}uadrate bekannt.
+\end{quote}
+
+Für das einfache lineare Modell ergibt sich für \(b_0\):
+
+\[b_0 = \bar{y} - b_1 \cdot \bar{x}\]
+
+und für \(b_1\):
+
+\[b_1 = \frac{n \cdot \sum x_i \cdot y_i - \sum x_i \cdot \sum y_i}{n \cdot \sum x_i^2 - (\sum x_i)^2}\]
+
+Um die Residuen und die Anpassung einer Geraden an die Daten besser zu verstehen, eignet sich folgende \href{newtab=https://phet.colorado.edu/sims/html/least-squares-regression/latest/least-squares-regression_en.html}{\textbf{Visualisierung einer Regression}} recht gut.
+
+\section*{Modellvorhersage \& Interpretation}\label{modellvorhersage-interpretation}
+\addcontentsline{toc}{section}{Modellvorhersage \& Interpretation}
+
+Das \(b_0\) wird auch konstanter Term, oder Interzept genannt. Es ist jener \(y\)-Wert, der durch das Modell für die Stelle \(x = 0\) vorhergesagt wird. Damit ist es auch jener Punkt auf der \(y\)-Achse, durch welche die Gerade geht.
+
+Inhaltlich entspricht dieser Wert dem vorhergesagtem Wert des Kriteriums \(\hat{y}\) an dem der Prädiktor \(x\) den Wert Null hat. Für unser Beispiel also jener Lernerfolg, der durch 0 Stunden Lernen zu erwarten wäre.
+
+Die Steigung \textbf{$b_1$} gibt die erwartete Veränderung des Kriteriums \(\hat{y}\) an, die einer Erhöhung des Prädiktors \(x\) um einen Einheit entspricht.
+
+\subsection*{Beispiel}\label{beispiel}
+\addcontentsline{toc}{subsection}{Beispiel}
+
+Der Lernerfolg \(\hat{y}\) soll durch die Anzahl der Stunden für die Vorbereitung zur Klausur \(x\) vorhergesagt werden. Sei \(b_0 = 10\) und \(b_1 = 3\). Die Regressionsgleichung lautet daher:
+
+\[\hat{y} = 10 + 3 \cdot x\]
+
+Hat jemand \(x = 0\) Stunden gelernt, wird anhand des Modells ein Lernerfolg von 10 vorhergesagt. Bei einem Lernaufwand von \(x = 1\) Stunde, würde das Modell einen Lernerfolg von \(\hat{y} = 13\), also eine um 3 Einheiten besseren Lernerfolg vorhersagen.
+
+In vielen Fällen ist jedoch eine Vorhersage eines \(\hat{y}\)-Werte bei einem \(x = 0\) nicht sinnvoll. Würde man z.B. den Lernerfolg mit Intelligenz vorhersagen und wären z.B. die aus beobachteten Daten ermittelten Koeffizienten \(b_0 = -9\) und \(b_1 = 0.2\), dann würde der Lernerfolg bei einer Intelligenz von \(x = 0\) dem Wert \(\hat{y} = -9\) vorhersagen. Das wäre aber offensichtlich eine unbrauchbare Vorhersage, da es einerseits keinen negativen Lernerfolg gibt und auf einer herkömmlichen IQ-Skala der Wert \(x = 0\) auch keine Bedeutung hat.
+
+\subsection*{Korrelation/Regression}\label{korrelationregression}
+\addcontentsline{toc}{subsection}{Korrelation/Regression}
+
+Zusammenhang Korrelation und Regression:
+
+\[b_1 = r(x,y) \cdot \frac{s_y}{s_x}\]
+
+Daraus leiten sich folgende Erkenntnisse ab:
+
+\begin{itemize}
+\tightlist
+\item
+  Die Steigung ist positiv (negativ), wenn die Korrelation positiv (negativ) ist.
+\item
+  Ist die Korrelation null, dann ist auch die Steigung null (Gerade ist parallel zur \(x\)-Achse)
+\item
+  \(b\) ist abhängig von \(s_x\) und \(s_y\). Daher führt eine Änderung der Messeinheit in einer der beiden Variablen auch zu einer Änderung der Steigung!
+\item
+  Aus voriger Folgerung kann man erkennen, dass \(b\) kein standardisiertes Maß für den Einfluß von \(x\) auf \(y\)
+\item
+  \(b\) ist direkt proportional zu \(r\)
+\end{itemize}
+
+\subsection*{Eigenschaften der Gerade}\label{eigenschaften-der-gerade}
+\addcontentsline{toc}{subsection}{Eigenschaften der Gerade}
+
+Folgende Eigenschaften der Regressionsgeraden sind bemerkenswert:
+
+\begin{itemize}
+\tightlist
+\item
+  eine zur \(x\)-Achse parallele Gerade bedeutet, dass kein Zusammenhang zwischen den beiden Variablen besteht. Für jeden beliebigen Wert des Prädiktors \(x\) wird stets der gleiche \(y\)-Wert (Kriterium) vorhergesagt.
+\item
+  eine nach rechts oben steigend bedeutet, dass mit Zunahme der Werte des Prädiktors auch die Werte des Kriteriums steigen und damit eine Abhängigkeit der beiden Variablen gegeben ist (positiver Zusammenhang).
+\item
+  eine nach rechts fallende bedeutet, dass mit Zunahme der Werte des Prädiktors die Werte des Kriteriums fallen und damit ebenfalls eine Abhängigkeit der beiden Variablen gegeben ist (negativer Zusammenhang).
+\item
+  die Regressionsgerade wurde aus den Daten einer Stichprobe berechnet.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Die Parameter der Regressionsgerade \(b_0, b_1, s_b\) sind Schätzwerte der in der Population vorhandenen Parameter \(\beta_0, \beta_1, \sigma_b\).
+  \end{itemize}
+\end{itemize}
+
+\subsection*{Beta-Gewichte}\label{beta-gewichte}
+\addcontentsline{toc}{subsection}{Beta-Gewichte}
+
+Werden die in die Regression eingehenden Variablen (Kriterium und Prädiktorvariable(n)) vor Berechnung der Koeffizienten z-transformiert, erhält man standardisierte Koeffizienten. Diese Koeffizienten werden allegemein auch als \textbf{Beta-Gewichte} (\textbf{B\_1}, oder \(\beta_1\)) bezeichnet. Es gilt:
+
+\[\hat{z}_y = B_0 + B_1 \cdot z_x\]
+
+Auch für das \(B_1\) besteht ein direkt proportionaler Zusammenhang der Steigung zur Korrelation:
+
+\[B_1 = r(z_x, z_y) \cdot \frac{s_{z_y}}{s_{z_x}} = r(x, y) \cdot \frac{1}{1} = r\]
+Wie halten folgende wichtige Zusammenhänge zwischen \(r(x,y)\) und \(B_j\) fest:
+
+\begin{itemize}
+\tightlist
+\item
+  Die Korrelation \(r(x,y)\) und der standardisierte Steigungskoeffizient \(B\) sind identisch.\footnote{WICHTIG: dies gilt prinzipiell für ELR, aber unter der Bedingung, dass alle verwendeten Prädiktoren voneinander unabhängig sind (also nicht korrelieren) auch für die Beta-Gewichte der multiplen Regression!\}}
+\item
+  Beide Maße (\(r(x,y)\) und \(B\)) sind unabhängig von der Messeinheit der beiden Variablen.
+\item
+  \(B\) und damit auch \(r(x,y)\) zeigen den Effekt, den die Änderung des Prädiktors um eine Standardabweichung auf das z-transformierte Kriterium hat.
+\item
+  \(r\) ist somit eine Maßzahl, die bei Regressionsmodellen die Effektstärke widerspiegelt.
+\item
+  Nach Cohen gelten folgende Richtwerte: \(r = 0.1\) entspricht einem kleinen, \(r = 0.3\) entspricht einem mittleren und \(r = 0.5\) entspricht einem starken Effekt.
+\item
+  der \(\beta\)-Koeffizient gibt an, wie viele Standardabweichungen sich die abhängige Variable ändert, wenn sich die unabhängige Variable um eine Standardabweichung ändert. Ein \(\beta\)-Wert von 0.5 bedeutet beispielsweise, dass eine Erhöhung der unabhängigen Variable um eine Standardabweichung zu einem Anstieg der abhängigen Variable um 0.5 Standardabweichungen führt.
+\item
+  da die Koeffizienten standardisiert sind, kann das \(\beta\) über verschiedene Modelle hinweg direkt verglichen werden, was hilfreich ist, wenn man wissen möchte, welcher Prädiktor den stärksten Einfluss hat (insbesondere in einer multiplen Regressionsanalyse).
+\item
+  während der \(\beta\)-Koeffizient die Stärke und Richtung der Beziehung zwischen zwei Variablen beschreibt, impliziert er \emph{keine Kausalität}.
+\end{itemize}
+
+\subsection*{Residuen}\label{residuen}
+\addcontentsline{toc}{subsection}{Residuen}
+
+Eigenschaften von Residuen:
+
+\begin{itemize}
+\tightlist
+\item
+  Die \(\varepsilon_i\) enthalten Anteile der Kriteriumsvariablen \(y\), die durch die Prädiktorvariable \(x\) nicht erfasst/erklärt werden.
+\item
+  Diese Anteile bestehen aus
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Messfehler
+  \item
+    Anteile, die evtl. durch weitere Variablen erklärt werden, die aber mit dem verwendeten Prädiktor nichts zu tun haben, also mit \(r(x,\varepsilon) = 0\) korrelieren.
+  \end{itemize}
+\end{itemize}
+
+Für den sogenannten \textbf{Standardfehler der Residuen} gilt:
+
+\[s_e = \sqrt{\frac{\sum_{i=1}^{n} e_i^2}{n-2}} = \sqrt{\frac{1}{n-2} \cdot \sum_{i=1}^{n} e_i^2}\]
+
+\subsection*{Standardschätzfehler}\label{standardschuxe4tzfehler}
+\addcontentsline{toc}{subsection}{Standardschätzfehler}
+
+Der **Standardschätzfehler*\}** (\(s_e\)) (engl. standard error of estimate) bei einer Regression kennzeichnet die Streuung der \(y\)-Werte um die Regressionsgerade und ist damit ein Gütemaßstab für die Genauigkeit der Regressionsvorhersagen. Je kleiner dieser Fehler, desto besser die Regressionsvorhersage.
+
+Dieser Fehler ist ein eigenes Modellgütemaß, wird aber weniger häufig als das Bestimmtheitsmaß, bzw. als Determinationskoeffizient angegeben, obwohl der Standardfehler der Residuen bei der Bewertung Anpassungsgüte möglicherweise aussagekräftiger ist (siehe Bemerkungen beim Bestimmtheitsmaß).
+
+\emph{Bemerkung:}
+
+Mithilfe des Standardfehlers können Konfidenzintervalle konstruiert werden.
+
+\subsection*{Determinationskoeffizient}\label{determinationskoeffizient}
+\addcontentsline{toc}{subsection}{Determinationskoeffizient}
+
+Das Bestimmtheitsmaß, auch als \(R^2\) bekannt, quantifiziert, wie gut die unabhängigen Variablen in einem linearen Regressionsmodell die Streuung der abhängigen Variable erklären, indem es den Anteil der Gesamtvarianz darstellt, der durch das Modell erklärt wird\footnote{Wikipedia}.
+
+Es ist wichtig für die Bewertung der Modellanpassung, da ein höherer \(R^2\)-Wert auf eine bessere Erklärungsfähigkeit des Modells hinweist. Bei der Verwendung ist jedoch unbedingt auch auf die nachfolgend diskutierten Einschränkungen der (sinnvollen) Interpretierbarkeit diese Maßes zu achten!
+
+\[R^2 = \frac{\sum_{i=1}^{n} (\hat{y}_i - \bar{y})^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2} = 1- \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2}\]
+in Worten:
+
+\[R^2 = \frac{\textrm{erklärte Variation}}{\textrm{gesamte Variation}} = 1 - \frac{\textrm{unerklärte Variation}}{\textrm{gesamte Variation}}\]
+
+\textbf{Wertebereich}: das Maß nimmt den Wert 1 an, wenn \(\sum (y_i - \hat{y}_i)^2 = 0\), oder \(\sum_{i=1}^{n} (\hat{y}_i - \bar{y})^2 = \sum_{i=1}^{n} (y_i - \bar{y})^2\) ist, bzw. den Wert 0, wenn \(\sum_{i=1}^{n} (\hat{y}_i - \bar{y})^2 = 0\)!
+
+Wenn das Regressionsmodell kein Absolutglied enthält (es liegt ein homogenes Regressionsmodell vor), kann das Bestimmtheitsmaß negativ werden.\footnote{Normalerweise wird \(R^2\) in der Formel \(R^2 = 1 - \frac{\text{SSR}}{\text{SST}}\) definiert, wobei SSR (Sum of Squared Residuals) der Teil der Varianz ist, der nicht durch das Modell erklärt wird, und SST (Total Sum of Squares) die Gesamtvarianz der abhängigen Variablen darstellt. In einem gewöhnlichen linearen Regressionsmodell, das ein Absolutglied (Intercept) beinhaltet, wird das Modell der optimalen Anpassung dadurch erreicht, dass es den Datenmittelwert als Ausgangspunkt nutzt. Dadurch hat SSR im besten Fall einen geringeren Wert als SST, was zu einem positiven \(R^2\) führt. Bei einem homogenen Modell ohne Absolutglied, also ohne den konstanten Term, wird das Modell gezwungen, durch den Ursprung (Nullpunkt) zu verlaufen. Dies kann die Anpassung des Modells an die Daten stark verschlechtern, insbesondere wenn die tatsächlichen Datenpunkte um einen von Null verschiedenen Mittelwert gruppiert sind. In solchen Fällen kann die Summe der quadrierten Residuen (SSR) größer werden als die Gesamtvarianz (SST), was zu einem negativen Wert von \(1 - \frac{\text{SSR}}{\text{SST}}\) führt. Ein negatives \(R^2\) ist eine Indikation dafür, dass das Modell schlechter abschneidet als ein einfaches Durchschnittsmodell, das lediglich den Mittelwert der abhängigen Variablen als Vorhersage nutzt.}
+
+\subsection*{Venn Diagramm}\label{venn-diagramm}
+\addcontentsline{toc}{subsection}{Venn Diagramm}
+
+Cohen und Cohen (1975) und Kennedy (1981) konnten zeigen, dass sich das Bestimmtheitsmaß graphisch mittels Venn-Diagrammen veranschaulichen lässt.
+
+Wir betrachten die Variablen Lernerfolg (\texttt{LE}) und Lerndauer (\texttt{LD}). Angenommen, ihre Korrelation beträgt \(r = 0.5\). Daraus folgt der Determinationskoeffizient mit \(r^2 = 0.5^2 = 0.25\), was 25\% der Varianz erklärt. Mit anderen Worten: 25\% der Varianz im Lernerfolg wird durch die Lerndauer erklärt.
+
+\includegraphics{EinfacheLineareRegression_files/figure-latex/VennDiagramme1-1.pdf}
+
+Damit ergibt sich aber auch zwangsläufig die Erkenntnis, dass immerhin noch 75\% der Variabilität vom Lernerfolg unerklärt sind! Man könnte also davon ausgehen, dass es weitere Variablen/Merkmale gibt, die weitere Anteile dieser noch unerklärten Varianz erklären können. Ideal wären dabei eine, oder mehrere Prädiktorvariablen, die mit der Kriteriumsvariablen hoch, mit den anderen unabhängigen Variablen aber wenig bis gar nicht korrelieren, wie im nachfolgenden Graph dargestellt wird:
+
+\includegraphics{EinfacheLineareRegression_files/figure-latex/VennDiagramme2-1.pdf}
+
+Wie man den Angaben zur aufgeklärten Varianz entnehmen kann, beträgt die Korrelation von \(r(LE,LD) = 0.50\), \(r(LE,IQ) = 0.60\) und der \(r(IQ,LD) = 0.08\). Daraus kann man sich ganz einfach die nicht aufgeklärte Varianz von \texttt{LE} errechnen. Diese ergbit sich aus \(100 - 25 - 36 = 39\).
+
+\subsection*{Multiple Regression}\label{multiple-regression}
+\addcontentsline{toc}{subsection}{Multiple Regression}
+
+Die Multiple lineare Regression ist ein statistisches Verfahren, mit dem versucht wird, eine beobachtete abhängige Variable durch mehrere unabhängige Variablen zu erklären. Die multiple lineare Regression stellt eine Verallgemeinerung der einfachen linearen Regression dar. Das Beiwort „linear`` bedeutet, dass die abhängige Variable als eine Linearkombination (nicht notwendigerweise) linearer Funktionen der unabhängigen Variablen modelliert wird (siehe Wikipedia). Dieser Themenbereich wird im Rahmen der Methodenlehre und Statistik 3 im Detail besprochen.
+
+Die Grundlegende Idee kann man jedoch bereits mit den gerade vorgestellten Venn-Diagrammen bereits gut erfassen. Für ein Modell mit 2 Prädiktoren eignet sich auch noch der Scatterplot gut, um die Eigenschaften und Zusammenhänge der Residuen und des Modells zu verstehen. Anstelle einer Linie, wird es bei 2 Prädiktoren einen Ebene. Ab 3 Prädiktoren ist der Scatterplot allerdings nicht mehr darstellbar.
+
+\includegraphics{EinfacheLineareRegression_files/figure-latex/MultipleRegression-1.pdf}
+
+\subsection*{Eigenschaften des Determinationskoeffizienten}\label{eigenschaften-des-determinationskoeffizienten}
+\addcontentsline{toc}{subsection}{Eigenschaften des Determinationskoeffizienten}
+
+Der Determinationskoeffizient wird häufig als Gütemaß eines linearen Modells verwendet. Dabei sind jedoch folgende Eigenschaften unbedingt zu berücksichtigen:
+
+\begin{itemize}
+\tightlist
+\item
+  zeigt die \textit{Qualität} der linearen Approximation, jedoch nicht, ob das Modell richtig spezifiziert wurde, also ob eine lineare Anpassung überhaupt die geeignete Modellvorstellung ist.
+\item
+  sagt nichts über die kausale Ursache des Zusammenhangs aus. Der Schluss, dass die unabhängige Variable \(x\) der Grund für die Änderungen in \(y\) sind kann diesem Maß nicht entnommen werden!
+\item
+  gibt keine Auskunft über die statistische Signifikanz des ermittelten Zusammenhangs!
+\item
+  ein hohes Bestimmtheitsmaß ist kein Beweis für ein \textit{gutes} Modell und ein niedriges Bestimmtheitsmaß bedeutet nicht, dass es sich um ein \textit{schlechtes} Modell handelt. Veranschaulicht wird diese Eigenschaft durch das Anscombe-Quartett\footnote{Details siehe Wikipedia}, siehe nächste Folie.
+\end{itemize}
+
+\subsection*{Ascombe-Quartett}\label{ascombe-quartett}
+\addcontentsline{toc}{subsection}{Ascombe-Quartett}
+
+Bei Betrachgung der nachfolgenden Streudiagramme sieht man klar, dass die Daten und Zusammenhänge verschieden aussehen. Berechnet man die statistischen Kennzahlen, haben diese aber nahezu dieselben Werte!
+
+\begin{figure}
+\centering
+\includegraphics{images/Anscombe-Quartet.png}
+\caption{Alternativtext}
+\end{figure}
+
+\section*{Signifikanztests}\label{signifikanztests}
+\addcontentsline{toc}{section}{Signifikanztests}
+
+Wie bei den meisten Kennwerten der Statistisk, will man neben der Größe und Richtung des Effektes auch die statistische Signifikanz berechnen. Damit die Ergebnisse dieser Berechnung sinnvoll interpretiert werden dürfen, müssen bestimmte Voraussetzungen erfüllt sein.
+
+\subsection*{Voraussetzungen}\label{voraussetzungen}
+\addcontentsline{toc}{subsection}{Voraussetzungen}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Skalenniveau des Kriteriums}: für die hier besprochenen einfache lineare Regression muss die Kriteriumsvariable intervallskaliert sein.
+\item
+  \textbf{Linearität}: die in der Population vorliegende Abhängigkeit zwischen Prädiktor und Kriterium kann durch eine Gerade dargestellt werden.
+\item
+  \textbf{Homoskedastizität}: die Varianz der \(y\)-Werte, welche an einer bestimmten Stelle des Prädiktors vorliegt, ist für alle Prädiktorwerte gleich.
+\item
+  \textbf{Normalverteilung}: die Residuen (\(\varepsilon_i\)) sind normalverteilt (\(\Rightarrow\) der Mittelwert des Fehlers \(\bar{\varepsilon} = 0\)).
+\item
+  \textbf{Unabhängigkeit der Daten und der Fehler \(\varepsilon\)}: Alle Daten sollten unabhängig voneinander sein, d.h. die Fälle sollten nicht untereinander korrelieren. Der Wert \(x_i\) sollte also nicht einfach von \(x_{i-1}\) (mit \(1 \leq i \leq N\) ) abgeleitet werden können (gilt insbesondere für die Fehler oder Residuen \(\varepsilon\)).
+\end{enumerate}
+
+\subsection*{Graphisches prüfen der Voraussetzungen}\label{graphisches-pruxfcfen-der-voraussetzungen}
+\addcontentsline{toc}{subsection}{Graphisches prüfen der Voraussetzungen}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \FunctionTok{read\_chunk}\NormalTok{(}\StringTok{"Programme/Graphiken\_Voraussetzungsverletzungen.R"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Einfach und effizient lassen sich bestimmte Voraussetzungen bereits in einem \emph{Scatterplot} prüfen. Diese \emph{Prüfmethode} sollte immer gekoppelt mit entsprechender Analyse von Kennwerten und gegebenenfalls mit statistischen Verfahren zur Prüfung der Signifikanz einer Verletzung gekoppelt werden.
+
+Die statistischen Verfahren zur Prüfung auf Voraussetzungsverletzungen werden weiter unten noch besprochen.
+
+\includegraphics{EinfacheLineareRegression_files/figure-latex/VerletzungenGraphisch-1.pdf}
+
+\section*{\texorpdfstring{Berechnung des Modells in \textbf{R}}{Berechnung des Modells in R}}\label{berechnung-des-modells-in-r}
+\addcontentsline{toc}{section}{Berechnung des Modells in \textbf{R}}
+
+Die Berechnung eines linearen Modells mit R ist mit der Funktion:
+
+\[lm(Y \sim X, data = df)\]
+
+denkbar einfach. Die Funktion \(lm()\) \textbf{l}inear \textbf{m}odel erfordert eine \emph{Formel}, also die Angabe der Kriteriumsvariable und der Prädiktorvariable(n), sowie den Datensatz der zum Trainieren des Modells verwendet werden soll. In R steht die Tilde (\(\sim\)) in einer Formel für die Zuordnung zwischen der abhängigen und den unabhängigen Variablen.
+
+Für das bereist verwendete Beispiel mit dem Lernerfolg und der Lerndauer würde die Berechnung der Koeffizienten in R konkret durch folgenden Aufruf durchgeführt werden:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  lm\_fit }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(LE }\SpecialCharTok{\textasciitilde{}}\NormalTok{ LD, }\AttributeTok{data =}\NormalTok{ df)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection*{Koeffizienten}\label{koeffizienten}
+\addcontentsline{toc}{subsection}{Koeffizienten}
+
+Nachfolgende Tabelle zeigt die berechneten Regressionkoeffizienten:
+
+\begin{verbatim}
+## # A tibble: 2 x 6
+##   term      estimate std.error statistic  p.value std.beta
+##   <chr>        <dbl>     <dbl>     <dbl>    <dbl>    <dbl>
+## 1 Intercept    34.9      1.57       22.3 3.99e-40   NA    
+## 2 LD            1.47     0.114      12.9 7.54e-23    0.793
+\end{verbatim}
+
+\subsubsection*{Formale Interpretation}\label{formale-interpretation}
+\addcontentsline{toc}{subsubsection}{Formale Interpretation}
+
+Die Gerade schneidet die y-Achse bei einem Wert von 34.93. Der Standardfehler beträgt 1.57, die Tesstatistik \(t = 22.3, p < .001\), womit sich der Interzept signifikant von 0 unterscheidet.\footnote{in den meisten Fällen sind die Werte des Interzepts (also \(b_0\)), sowie dessen Signifikanz, nicht von Interesse!}
+
+Die Steigung beträgt 1.47, die Testatistik \(t = 12.9, p < .001\) ist ebenfalls signifikant. Der standardisierte Steigungskoeffizient \(B = .79\) entspricht der Korrelation der beiden Variablen. Der sich daraus berechenbare Determinationskoeffizient \(R^2 = .63\). Damit klärt die Lerndauer 63\% der Variabilität im Lernerfolg auf.
+
+\subsubsection*{Inhaltliche Interpretation}\label{inhaltliche-interpretation}
+\addcontentsline{toc}{subsubsection}{Inhaltliche Interpretation}
+
+Die Inhaltliche Interpretation ist für den Bericht der Ergebnisse die wichtigere. Im vorliegenden Fall würde man bei einer Lerndauer von 0 Stunden 34.9\% Prozent erreichen. Mit jeder zusätzlichen Lernstunde erhöht sich der Lernerfolg um 1.47\%.
+
+\subsection*{Hypothesen}\label{hypothesen}
+\addcontentsline{toc}{subsection}{Hypothesen}
+
+Von Bedeutung ist die statistische Absicherung der Steigung \(b_1\). Bei jeder Wiederholung einer Untersuchung wird sich mit sehr großer Wahrscheinlichkeit der berechnete \(b_1\) ändern. Sind die Annahmen des Regressionsmodels (Linearität, Homoskedastizität, Normalverteilung der Residuen) erfüllt, dann ist die Stichprobenverteilung der \(b_1\) normalverteilt.
+
+Der Mittelwert dieser Verteilung ist dann die unbekannte (wahre) Steigung \(\beta\). Ebenfalls unbekannt ist die Standardabweichung der Stichprobenverteilung \(\sigma_b\) (= Standardfehler der Steigung). Diese kann jedoch über den Standardfehler der Steigung \(s_b\) geschätzt werden (Details siehe Literatur). Es gilt:
+
+\[s_b = \frac{s_e}{\sqrt{ \sum_{i=1}^{n} (x_i - \bar{x})^2}}\]
+
+Die Nullhypothese lautet:
+
+\[H_0: \beta = \beta_0\]
+
+\subsection*{Bewertung des Modells - ANOVA}\label{bewertung-des-modells---anova}
+\addcontentsline{toc}{subsection}{Bewertung des Modells - ANOVA}
+
+Um zu testen, ob das Modell sich im Vergleich zum \textit{Mittelwertsmodell} signifikant unterscheidet, also ob es hinsichtlich der aufgeklärten Varianz der abhängigen Variablen bedeutsam besser ist, kann man die folgende ANOVA-Tabelle verwenden.
+
+\begin{verbatim}
+## # A tibble: 2 x 6
+##   term         df  sumsq  meansq statistic   p.value
+##   <chr>     <int>  <dbl>   <dbl>     <dbl>     <dbl>
+## 1 LD            1 10009. 10009.       166.  7.54e-23
+## 2 Residuals    98  5893.    60.1       NA  NA
+\end{verbatim}
+
+Wenn die ANOVA ein signifikantes Ergebnis liefert, wie es in vorliegender Fall auch zutrifft (\(F(1,98) = 166, p < .001\)), kann man von einer signifikant besseren Modell als das Mittelwertsmodell ausgehen.
+
+\begin{figure}
+\centering
+\includegraphics{images/Regression.jpg}
+\caption{Quadratsummen}
+\end{figure}
+
+Erläuterung der Quadratsummen in der ANOVA-Tabelle:
+
+\begin{itemize}
+\tightlist
+\item
+  Totale-Quadratsumme (LD sumsq + Residuals sum\_Sq): die quadrierte Summe der Differenzen zwischen beobachteten Werten und dem Mittelwert, also \(QS_{Total} = \sum (y_i - \bar{y})^2\)
+\item
+  Fehler-Quadratsumme (Residual sumsq): die Summe der Differenzen zwischen beobachteten Werten und vorhergesagten Werten, also \(QS_{Fehler} = \sum (y_i - \hat{y}_i)^2\)
+\item
+  Modell-Quadratsumme (LD sumsq): die Summe der Differenzen zwischen vorhergesagten Werten und dem Mittelwert, also \(QS_{Modell} = \sum (\hat{y}_i - \bar{y})^2\)
+\end{itemize}
+
+Mit den Ergebnissen der ANOVA lassen sich folgende Fragen beantworten:
+
+\begin{itemize}
+\tightlist
+\item
+  Welcher Anteil der Gesamtvariabilität \(QS_{Total}\) wird durch das Modell \(QS_{Modell}\) erklärt?
+\item
+  In welchem Verhältnis steht die durch das Modell aufgeklärte Varianz \(MQS_{Modell}\) (mittlerer Quadratsumme des Modells) zur nicht aufgeklärten Varianz \(MQS_{Fehler}\) (mittlerer Quadratsumme des Fehlers)?
+\end{itemize}
+
+\textbf{\emph{Frage 1:}}
+
+\[R^2 = \frac{QS_{Modell}}{QS_{Total}} \hspace{.5cm}\]
+
+Das entspricht also dem bereits bekannten Determinationskoeffizienten, also der aufgeklärten Varianz.
+
+\textbf{\emph{Frage 2}}
+
+\[MQS_{Modell} = \frac{QS_{Modell}}{df_{Modell}} \textrm{ und } MQS_{Fehler} = \frac{QS_{Fehler}}{df_{Fehler}}\]
+\[df_{Modell} = 1 \\ df_{Fehler} = N - p\]
+
+mit \$p = \$ Anzahl der verwendeten Parameter \(b_0\) und \(b_1\), also 2.
+
+\textbf{\emph{Teststatistik}}
+
+\[F = \frac{MQS_{Modell}}{MQS_{Fehler}}\]
+
+\subsection*{Konfidenzintervalle}\label{konfidenzintervalle}
+\addcontentsline{toc}{subsection}{Konfidenzintervalle}
+
+Für den Interzept gilt:
+
+\[\textrm{untere Grenze} = b_0 - t_{df;1-\alpha/2} \cdot s_b\]
+\[\textrm{obere Grenze}  = b_0 + t_{df;1-\alpha/2} \cdot s_b\]
+
+Für die Steigung gilt:
+
+\[\textrm{untere Grenze} = b_1 - t_{df;1-\alpha/2} \cdot s_b\]
+\[\textrm{obere Grenze}  = b_1 + t_{df;1-\alpha/2} \cdot s_b\]
+
+\textbf{\emph{Erkenntnis:}}
+
+Der Signifikanztest \(H_0: \beta = 0\) führt bei zweiseitiger Testung dann zu einem nicht-signifikanten Ergebnis, wenn das \(1- \alpha\) Konfidenzintervall den Wert null enthält (z.B. \(KI_{b_1} = [-0.2, 0.4]\)).
+
+\section*{Kategorieller Prädiktor}\label{kategorieller-pruxe4diktor}
+\addcontentsline{toc}{section}{Kategorieller Prädiktor}
+
+Bei lineare Modellen ist häufig neben intervallskalierten Prädiktorvariablen auch die Verwendung von kategoriellen Variablen von Interesse. So lange der verwendete Prädiktor nur zwei Ausprägungen hat (z.B. männlich/weiblich, Ja/Nein, etc.), stellt dies auch kein Problem dar.
+
+\subsection*{Mehrstufige(r) kategorielle(r) Prädiktor(en)}\label{mehrstufiger-kategorieller-pruxe4diktoren}
+\addcontentsline{toc}{subsection}{Mehrstufige(r) kategorielle(r) Prädiktor(en)}
+
+Während eines dreitägigen Musikfestivals wurde bei einer Anzahl freiwilliger TeilnehmerInnen der ``Hygienezustand'' gemessen (Variablen \emph{day1}, \emph{day2}, \emph{day3}). Der Wertebereich der Messung liegt zwischen 0 und 4, mit 0 = smell like s..t, bis 4 = smell like freshly baked bread\footnote{Daten und Beispiel aus (\citeproc{ref-Field.2017}{A. Field 2017}), Kapitel 7.12.1}. Darüber hinaus wurden die TeilnehmerInnen über ihre jeweilige Zuordnung zu eine bestimmten, persönlich bevorzugten Musikrichtung (\emph{music}) befragt. Bei dem Fesitval gaben die TeilnehmerInnen insgesamt vier verschiedenen Musikrichtungen an: \emph{Metaller}, \emph{Crusty}, \emph{Indie}, \emph{NMA} (= No Music Affiliation). Nach Erfassung der Daten wurde die Differenz der Hygienewerte zwischen dem letzten und dem ersten Tag des Festivals berechnet und in der Variablen \emph{change} gespeichert:
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1200}}
+  >{\centering\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1467}}
+  >{\centering\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.3333}}
+  >{\centering\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.0933}}
+  >{\centering\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.0933}}
+  >{\centering\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.0933}}
+  >{\centering\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1200}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+~
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+ticknumb
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+music
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+day1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+day2
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+day3
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+change
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{1} & 2111 & Metaller & 2.65 & 1.35 & 1.61 & -1.04 \\
+\textbf{2} & 2229 & Crusty & 0.97 & 1.41 & 0.29 & -0.68 \\
+\textbf{10} & 2504 & No Musical Affiliation & 1.11 & 0.44 & 0.55 & -0.56 \\
+\textbf{12} & 2510 & Crusty & 0.82 & 0.2 & 0.47 & -0.35 \\
+\textbf{14} & 2515 & No Musical Affiliation & 1.76 & 1.64 & 1.58 & -0.18 \\
+\textbf{21} & 2549 & Crusty & 2.17 & 0.7 & 0.76 & -1.41 \\
+\end{longtable}
+
+Offenbar liegt bei der Variablen \emph{music} ein Faktor mit mehr als 2 Stufen (es sind 4) vor. Da die Verwendung von katetoriellen Variablen in einem linearen Modell eine Stufenanzahl von 2 voraussetzt, kann durch geschicktes Kodieren der Variablen diese Voraussetzung auch für mehrstufige Variablen erreicht werden.
+
+\subsection*{Dummy Kodierung}\label{dummy-kodierung}
+\addcontentsline{toc}{subsection}{Dummy Kodierung}
+
+Man nennt diesen Vorgang auch \textbf{Dummy Kodierung}. Die Vorgehensweise ist dabei:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Die Anzahl der neuen (Dummy) Variablen ist die Anzahl der Stufen des Prädiktors - 1 \((N_{DummyVars} = N_{Stufen} - 1)\)
+\item
+  Man legt so viele neue Variablen (Dummy-Variablen) an, wie man (im ersten Schritt) als Anzahl der Gruppen berechnet hat.
+\item
+  Wahl einer Bezugsgruppe (Baseline-Bedingung). üblicherweise die Kontrollgruppe, falls keine vorhanden wählt man am besten die Gruppe, in der die meisten Personen/Fälle vorliegen.
+\item
+  Allen Dummy-Variablen für die gewählte Baselinegruppe den Zahlenwert 0 zuweisen.
+\item
+  Der ersten Dummy-Variablen für die erste Gruppe die man gegen die Baselinegruppe vergleichen will den Wert 1 zuweisen, den restlichen Gruppen den Wert 0.
+\item
+  Wiederholung des Schrittes 5, bis alle Dummy-Variablen entsprechend codiert wurden.
+\item
+  Alle Dummy-Variablen ins Modell aufnehmen!
+\end{enumerate}
+
+\begin{longtable}[]{@{}lccc@{}}
+\toprule\noalign{}
+& DVar1 & DVar2 & DVar2 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Crusty & 1 & 0 & 0 \\
+Indie Kid & 0 & 1 & 0 \\
+Metaller & 0 & 0 & 1 \\
+No Affliation & 0 & 0 & 0 \\
+\end{longtable}
+
+Bei der linearen Modellierung in R werden kategorielle Daten im Modell automatisch Dummy-Kodiert. Will man jedoch eine spezielle Anordung der Gruppen, sollte man wissen, wie eine händische Kodierung einfach durchgeführt werden kann. Im folgenden Code werden diese Möglichkeiten dargestellt:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \CommentTok{\# Automatisch ohne Bezeichnung der Dummyvariablen}
+    \FunctionTok{contrasts}\NormalTok{(DF}\SpecialCharTok{$}\NormalTok{music) }\OtherTok{\textless{}{-}} \FunctionTok{contr.treatment}\NormalTok{(}\DecValTok{4}\NormalTok{, }\AttributeTok{base =} \DecValTok{4}\NormalTok{)}
+    \CommentTok{\# Manuel mit Bezeichnung der Dummyvariablen}
+\NormalTok{    crusty\_v\_NMA        }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{)}
+\NormalTok{    indie\_v\_NMA         }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{)}
+\NormalTok{    metal\_v\_NMA         }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{)}
+    \FunctionTok{contrasts}\NormalTok{(DF}\SpecialCharTok{$}\NormalTok{music) }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(crusty\_v\_NMA, indie\_v\_NMA, metal\_v\_NMA)}
+    \FunctionTok{pander}\NormalTok{(}\FunctionTok{attr}\NormalTok{(DF}\SpecialCharTok{$}\NormalTok{music, }\StringTok{"contrasts"}\NormalTok{), }\AttributeTok{digits =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4028}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2083}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1944}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1944}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+~
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+crusty\_v\_NMA
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+indie\_v\_NMA
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+metal\_v\_NMA
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Crusty} & 1 & 0 & 0 \\
+\textbf{Indie Kid} & 0 & 1 & 0 \\
+\textbf{Metaller} & 0 & 0 & 1 \\
+\textbf{No Musical Affiliation} & 0 & 0 & 0 \\
+\end{longtable}
+
+\subsection*{Modelle mit kategoriellen Variablen}\label{modelle-mit-kategoriellen-variablen}
+\addcontentsline{toc}{subsection}{Modelle mit kategoriellen Variablen}
+
+Sind die Dummy-Variablen angelegt, kann damit auch das Modell erstellt werden. Im nachfolgenden Beispiel wird die Variable \emph{change} durch die Dummy-Kodierten Prädiktoren modelliert. Die erste Tabelle zeigt die durchschnittlichen \emph{change}-Werte pro Musikzugehörigkeitsgruppe.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \FunctionTok{pander}\NormalTok{(}\FunctionTok{round}\NormalTok{(}\FunctionTok{tapply}\NormalTok{(DF}\SpecialCharTok{$}\NormalTok{change, DF}\SpecialCharTok{$}\NormalTok{music, mean, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1250}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1667}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1528}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3472}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+Crusty
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Indie Kid
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Metaller
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+No Musical Affiliation
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+-0.966 & -0.964 & -0.526 & -0.554 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{    mod\_dummy\_1 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(change }\SpecialCharTok{\textasciitilde{}}\NormalTok{ music, }\AttributeTok{data =}\NormalTok{ DF)}
+\NormalTok{    AllRes      }\OtherTok{\textless{}{-}} \FunctionTok{summary}\NormalTok{(mod\_dummy\_1)}
+    \FunctionTok{pander}\NormalTok{(}\FunctionTok{anova}\NormalTok{(mod\_dummy\_1), }\AttributeTok{digits =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.2222}}
+  >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.0833}}
+  >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1250}}
+  >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1389}}
+  >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1389}}
+  >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1389}}@{}}
+\caption{Analysis of Variance Table}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+~
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Df
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Sum Sq
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mean Sq
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+F value
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Pr(\textgreater F)
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+~
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Df
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Sum Sq
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mean Sq
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+F value
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Pr(\textgreater F)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{music} & 3 & 4.65 & 1.55 & 3.27 & 0.0237 \\
+\textbf{Residuals} & 119 & 56.4 & 0.474 & NA & NA \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \FunctionTok{pander}\NormalTok{(}\FunctionTok{summary.lm}\NormalTok{(mod\_dummy\_1), }\AttributeTok{digits =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.3333}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1528}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1806}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1389}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1528}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+~
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Estimate
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Std. Error
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+t value
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Pr(\textgreater\textbar t\textbar)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{(Intercept)} & -0.554 & 0.0904 & -6.13 & 1.15e-08 \\
+\textbf{musiccrusty\_v\_NMA} & -0.412 & 0.167 & -2.46 & 0.0152 \\
+\textbf{musicindie\_v\_NMA} & -0.41 & 0.205 & -2 & 0.0477 \\
+\textbf{musicmetal\_v\_NMA} & 0.0284 & 0.16 & 0.177 & 0.86 \\
+\end{longtable}
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2083}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3056}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1389}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2361}}@{}}
+\caption{Fitting linear model: change \textasciitilde{} music}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+Observations
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Residual Std. Error
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(R^2\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Adjusted \(R^2\)
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+Observations
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Residual Std. Error
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(R^2\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Adjusted \(R^2\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+123 & 0.6882 & 0.07617 & 0.05288 \\
+\end{longtable}
+
+Wesentliche Kennzahlen des Ergebnisses:
+
+\begin{itemize}
+\tightlist
+\item
+  \(R^2 = 0.076\): d.h., dass \(7.6\%\) der Variabilität in der Änderung der Hygenewerte zwischen ersten und dritten Tag (\emph{change}) durch die Zugehörigkeit zu einer Musikgruppe erklärt werden.
+\item
+  \(F(3, 119) = 3.27; p = .053\) gibt an, dass die \(7.6\%\) Varianzaufklärung statistisch signifikant ist. Das Modell ist also signifikant besser als kein Modell zu verwenden.
+\item
+  \emph{musiccrusty\_vs\_NMA}: Differenz zwischen der \emph{NMA} und \emph{crusty} Gruppe. Betrachtet man die Differenz der Mittelwerte (siehe obige Tabelle) zwischen \(crusty - NMA = -.966 - (-0.554) = -0.412\), stellt man fest, dass diese Differenz dem Estimate, also dem \(b\)-Koeffizienten entspricht. Offenbar ist die Änderung der Hygienewerte bei \emph{crusty} höher als bei der \emph{NMA} \(\rightarrow\) \emph{crusties} sind größere Schweindln wie die \emph{NMA} Leute. \textbf{Die \(b\)-Werte geben also die relative Änderung zur Baselinegruppe an!}
+\item
+  \(t = -2.46, p = .015\): tested ob die Differenz signifikant unterschiedlich zu einer Null-Differenz (kein Unterschied) in den Hygienebedingungen ist. Im vorliegenden Fall handelt es sich um eine signifikante Abnahme der Hygienewerte, wenn man von \emph{NMA} auf \emph{crusty} wechselt.
+\end{itemize}
+
+Die restlichen Koeffizienten sind in gleicher Weise zu interpretieren.
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-FieldWilcox.2017}
+Field, \& Wilcox, A. P. 2017. {``Robust Statistical Methods: A Primer for Clinical Psychology and Experimental Psychopathology Researchers.''} \emph{Behaviour Research and Therapy, 98, 19-38}. https://doi.org/\url{https://doi.org/10.1016/j.brat.2017.05.013}.
+
+\bibitem[\citeproctext]{ref-Field.2017}
+Field, A. 2017. \emph{Discovering Statistics Using r}. 2nd ed. 1 Olivers Yard, 55 City Road, London EC1Y 1SP: {SAGE Publications Ltd}.
+
+\bibitem[\citeproctext]{ref-Hurn.2008}
+Hurn, M. David. 2008. {``Modern Robust Statistical Methods: An Easy Way to Maximize the Accuracy and Power of Your Research.''} \emph{American Psychologist, Vol. 63, No. 7, 591--601}. \url{https://doi.org/10.1037/0003-066X.63.7.591}.
+
+\bibitem[\citeproctext]{ref-Mair.2020}
+Mair, Wilcox R., P. 2020. {``Robust Statistical Methods in r Using the WRS2 Package.''} \emph{Behavioural Research Methods, 52(2), 464-488}. \url{https://doi.org/10.3758/s13428-019-01246-w}.
+
+\bibitem[\citeproctext]{ref-Wilcox.2012}
+Wilcox, R. 2012. \emph{Introduction to Robust Estimation \& Hypothesis Testing.} 3rd ed. Amsterdam, The Netherlands: {Elsevier}.
+
+\end{CSLReferences}
+
+\end{document}
