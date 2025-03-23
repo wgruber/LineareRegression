@@ -206,7 +206,10 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#inhaltliche-interpretation"><i class="fa fa-check"></i>Inhaltliche Interpretation</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#hypothesen"><i class="fa fa-check"></i>Hypothesen</a></li>
-<li class="chapter" data-level="" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#bewertung-des-modells---anova"><i class="fa fa-check"></i>Bewertung des Modells - ANOVA</a></li>
+<li class="chapter" data-level="" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#bewertung-des-modells---anova"><i class="fa fa-check"></i>Bewertung des Modells - ANOVA</a>
+<ul>
+<li class="chapter" data-level="" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#erläuterung-der-quadratsummen-in-der-anova-tabelle"><i class="fa fa-check"></i>Erläuterung der Quadratsummen in der ANOVA-Tabelle</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#konfidenzintervalle"><i class="fa fa-check"></i>Konfidenzintervalle</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="kategorieller-prädiktor.html"><a href="kategorieller-prädiktor.html"><i class="fa fa-check"></i>Kategorieller Prädiktor</a>
@@ -368,14 +371,14 @@ div.csl-indent {
 </tbody>
 </table>
 <p>Bei der linearen Modellierung in R werden kategorielle Daten im Modell automatisch Dummy-Kodiert. Will man jedoch eine spezielle Anordung der Gruppen, sollte man wissen, wie eine händische Kodierung einfach durchgeführt werden kann. Im folgenden Code werden diese Möglichkeiten dargestellt:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="kategorieller-prädiktor.html#cb3-1" tabindex="-1"></a>    <span class="co"># Automatisch ohne Bezeichnung der Dummyvariablen</span></span>
-<span id="cb3-2"><a href="kategorieller-prädiktor.html#cb3-2" tabindex="-1"></a>    <span class="fu">contrasts</span>(DF<span class="sc">$</span>music) <span class="ot">&lt;-</span> <span class="fu">contr.treatment</span>(<span class="dv">4</span>, <span class="at">base =</span> <span class="dv">4</span>)</span>
-<span id="cb3-3"><a href="kategorieller-prädiktor.html#cb3-3" tabindex="-1"></a>    <span class="co"># Manuel mit Bezeichnung der Dummyvariablen</span></span>
-<span id="cb3-4"><a href="kategorieller-prädiktor.html#cb3-4" tabindex="-1"></a>    crusty_v_NMA        <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>)</span>
-<span id="cb3-5"><a href="kategorieller-prädiktor.html#cb3-5" tabindex="-1"></a>    indie_v_NMA         <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>)</span>
-<span id="cb3-6"><a href="kategorieller-prädiktor.html#cb3-6" tabindex="-1"></a>    metal_v_NMA         <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>)</span>
-<span id="cb3-7"><a href="kategorieller-prädiktor.html#cb3-7" tabindex="-1"></a>    <span class="fu">contrasts</span>(DF<span class="sc">$</span>music) <span class="ot">&lt;-</span> <span class="fu">cbind</span>(crusty_v_NMA, indie_v_NMA, metal_v_NMA)</span>
-<span id="cb3-8"><a href="kategorieller-prädiktor.html#cb3-8" tabindex="-1"></a>    <span class="fu">pander</span>(<span class="fu">attr</span>(DF<span class="sc">$</span>music, <span class="st">&quot;contrasts&quot;</span>), <span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="kategorieller-prädiktor.html#cb2-1" tabindex="-1"></a>    <span class="co"># Automatisch ohne Bezeichnung der Dummyvariablen</span></span>
+<span id="cb2-2"><a href="kategorieller-prädiktor.html#cb2-2" tabindex="-1"></a>    <span class="fu">contrasts</span>(DF<span class="sc">$</span>music) <span class="ot">&lt;-</span> <span class="fu">contr.treatment</span>(<span class="dv">4</span>, <span class="at">base =</span> <span class="dv">4</span>)</span>
+<span id="cb2-3"><a href="kategorieller-prädiktor.html#cb2-3" tabindex="-1"></a>    <span class="co"># Manuel mit Bezeichnung der Dummyvariablen</span></span>
+<span id="cb2-4"><a href="kategorieller-prädiktor.html#cb2-4" tabindex="-1"></a>    crusty_v_NMA        <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>)</span>
+<span id="cb2-5"><a href="kategorieller-prädiktor.html#cb2-5" tabindex="-1"></a>    indie_v_NMA         <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>)</span>
+<span id="cb2-6"><a href="kategorieller-prädiktor.html#cb2-6" tabindex="-1"></a>    metal_v_NMA         <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>)</span>
+<span id="cb2-7"><a href="kategorieller-prädiktor.html#cb2-7" tabindex="-1"></a>    <span class="fu">contrasts</span>(DF<span class="sc">$</span>music) <span class="ot">&lt;-</span> <span class="fu">cbind</span>(crusty_v_NMA, indie_v_NMA, metal_v_NMA)</span>
+<span id="cb2-8"><a href="kategorieller-prädiktor.html#cb2-8" tabindex="-1"></a>    <span class="fu">pander</span>(<span class="fu">attr</span>(DF<span class="sc">$</span>music, <span class="st">&quot;contrasts&quot;</span>), <span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div>
 <table>
 <colgroup>
 <col width="40%" />
@@ -423,7 +426,7 @@ div.csl-indent {
 <h2>Modelle mit kategoriellen Variablen<a href="kategorieller-prädiktor.html#modelle-mit-kategoriellen-variablen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Sind die Dummy-Variablen angelegt, kann damit auch das Modell erstellt werden. Im nachfolgenden Beispiel wird die Variable <em>change</em> durch die Dummy-Kodierten Prädiktoren modelliert. Die erste Tabelle zeigt die durchschnittlichen <em>change</em>-Werte pro Musikzugehörigkeitsgruppe.</p>
 <center>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="kategorieller-prädiktor.html#cb4-1" tabindex="-1"></a>    <span class="fu">pander</span>(<span class="fu">round</span>(<span class="fu">tapply</span>(DF<span class="sc">$</span>change, DF<span class="sc">$</span>music, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">3</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="kategorieller-prädiktor.html#cb3-1" tabindex="-1"></a>    <span class="fu">pander</span>(<span class="fu">round</span>(<span class="fu">tapply</span>(DF<span class="sc">$</span>change, DF<span class="sc">$</span>music, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">3</span>))</span></code></pre></div>
 <table style="width:79%;">
 <colgroup>
 <col width="12%" />
@@ -448,9 +451,9 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="kategorieller-prädiktor.html#cb5-1" tabindex="-1"></a>    mod_dummy_1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(change <span class="sc">~</span> music, <span class="at">data =</span> DF)</span>
-<span id="cb5-2"><a href="kategorieller-prädiktor.html#cb5-2" tabindex="-1"></a>    AllRes      <span class="ot">&lt;-</span> <span class="fu">summary</span>(mod_dummy_1)</span>
-<span id="cb5-3"><a href="kategorieller-prädiktor.html#cb5-3" tabindex="-1"></a>    <span class="fu">pander</span>(<span class="fu">anova</span>(mod_dummy_1), <span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="kategorieller-prädiktor.html#cb4-1" tabindex="-1"></a>    mod_dummy_1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(change <span class="sc">~</span> music, <span class="at">data =</span> DF)</span>
+<span id="cb4-2"><a href="kategorieller-prädiktor.html#cb4-2" tabindex="-1"></a>    AllRes      <span class="ot">&lt;-</span> <span class="fu">summary</span>(mod_dummy_1)</span>
+<span id="cb4-3"><a href="kategorieller-prädiktor.html#cb4-3" tabindex="-1"></a>    <span class="fu">pander</span>(<span class="fu">anova</span>(mod_dummy_1), <span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div>
 <table style="width:85%;">
 <caption>Analysis of Variance Table</caption>
 <colgroup>
@@ -490,7 +493,7 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="kategorieller-prädiktor.html#cb6-1" tabindex="-1"></a>    <span class="fu">pander</span>(<span class="fu">summary.lm</span>(mod_dummy_1), <span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="kategorieller-prädiktor.html#cb5-1" tabindex="-1"></a>    <span class="fu">pander</span>(<span class="fu">summary.lm</span>(mod_dummy_1), <span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div>
 <table style="width:96%;">
 <colgroup>
 <col width="33%" />

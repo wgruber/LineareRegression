@@ -206,7 +206,10 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#inhaltliche-interpretation"><i class="fa fa-check"></i>Inhaltliche Interpretation</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#hypothesen"><i class="fa fa-check"></i>Hypothesen</a></li>
-<li class="chapter" data-level="" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#bewertung-des-modells---anova"><i class="fa fa-check"></i>Bewertung des Modells - ANOVA</a></li>
+<li class="chapter" data-level="" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#bewertung-des-modells---anova"><i class="fa fa-check"></i>Bewertung des Modells - ANOVA</a>
+<ul>
+<li class="chapter" data-level="" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#erläuterung-der-quadratsummen-in-der-anova-tabelle"><i class="fa fa-check"></i>Erläuterung der Quadratsummen in der ANOVA-Tabelle</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#konfidenzintervalle"><i class="fa fa-check"></i>Konfidenzintervalle</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="kategorieller-prädiktor.html"><a href="kategorieller-prädiktor.html"><i class="fa fa-check"></i>Kategorieller Prädiktor</a>
@@ -239,7 +242,7 @@ div.csl-indent {
 <p><span class="math display">\[lm(Y \sim X, data = df)\]</span></p>
 <p>denkbar einfach. Die Funktion <span class="math inline">\(lm()\)</span> <strong>l</strong>inear <strong>m</strong>odel erfordert eine <em>Formel</em>, also die Angabe der Kriteriumsvariable und der Prädiktorvariable(n), sowie den Datensatz der zum Trainieren des Modells verwendet werden soll. In R steht die Tilde (<span class="math inline">\(\sim\)</span>) in einer Formel für die Zuordnung zwischen der abhängigen und den unabhängigen Variablen.</p>
 <p>Für das bereist verwendete Beispiel mit dem Lernerfolg und der Lerndauer würde die Berechnung der Koeffizienten in R konkret durch folgenden Aufruf durchgeführt werden:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="berechnung-des-modells-in-r.html#cb2-1" tabindex="-1"></a>  lm_fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(LE <span class="sc">~</span> LD, <span class="at">data =</span> df)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="berechnung-des-modells-in-r.html#cb1-1" tabindex="-1"></a>  lm_fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(LE <span class="sc">~</span> LD, <span class="at">data =</span> df)</span></code></pre></div>
 <div id="koeffizienten" class="section level2 unnumbered hasAnchor">
 <h2>Koeffizienten<a href="berechnung-des-modells-in-r.html#koeffizienten" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Nachfolgende Tabelle zeigt die berechneten Regressionkoeffizienten:</p>
@@ -398,20 +401,21 @@ NA
 </table>
 <p>Wenn die ANOVA ein signifikantes Ergebnis liefert, wie es in vorliegender Fall auch zutrifft (<span class="math inline">\(F(1,98) = 166, p &lt; .001\)</span>), kann man von einer signifikant besseren Modell als das Mittelwertsmodell ausgehen.</p>
 <div class="float">
-<img src="Images/Regression.jpg" alt="Quadratsummen" />
-<div class="figcaption">Quadratsummen</div>
+<img src="Images/Regression.png" style="width:70.0%" alt="Quadratsummenzerlegung: für die Berechnung der ANOVA werden verschieden Quadratsummen (QS) berechnet. Die Bedeutung dieser QS$* wird durch diese Darstellung verdeutlicht." />
+<div class="figcaption"><strong>Quadratsummenzerlegung</strong>: für die Berechnung der ANOVA werden verschieden Quadratsummen (<em>QS</em>) berechnet. Die Bedeutung dieser <em>QS</em>$* wird durch diese Darstellung verdeutlicht.</div>
 </div>
-<p>Erläuterung der Quadratsummen in der ANOVA-Tabelle:</p>
+<div id="erläuterung-der-quadratsummen-in-der-anova-tabelle" class="section level3 unnumbered hasAnchor">
+<h3>Erläuterung der Quadratsummen in der ANOVA-Tabelle<a href="berechnung-des-modells-in-r.html#erläuterung-der-quadratsummen-in-der-anova-tabelle" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Totale-Quadratsumme (LD sumsq + Residuals sum_Sq): die quadrierte Summe der Differenzen zwischen beobachteten Werten und dem Mittelwert, also <span class="math inline">\(QS_{Total} = \sum (y_i - \bar{y})^2\)</span></li>
 <li>Fehler-Quadratsumme (Residual sumsq): die Summe der Differenzen zwischen beobachteten Werten und vorhergesagten Werten, also <span class="math inline">\(QS_{Fehler} = \sum (y_i - \hat{y}_i)^2\)</span></li>
 <li>Modell-Quadratsumme (LD sumsq): die Summe der Differenzen zwischen vorhergesagten Werten und dem Mittelwert, also <span class="math inline">\(QS_{Modell} = \sum (\hat{y}_i - \bar{y})^2\)</span></li>
 </ul>
 <p>Mit den Ergebnissen der ANOVA lassen sich folgende Fragen beantworten:</p>
-<ul>
+<ol style="list-style-type: decimal">
 <li>Welcher Anteil der Gesamtvariabilität <span class="math inline">\(QS_{Total}\)</span> wird durch das Modell <span class="math inline">\(QS_{Modell}\)</span> erklärt?</li>
 <li>In welchem Verhältnis steht die durch das Modell aufgeklärte Varianz <span class="math inline">\(MQS_{Modell}\)</span> (mittlerer Quadratsumme des Modells) zur nicht aufgeklärten Varianz <span class="math inline">\(MQS_{Fehler}\)</span> (mittlerer Quadratsumme des Fehlers)?</li>
-</ul>
+</ol>
 <p><strong><em>Frage 1:</em></strong></p>
 <p><span class="math display">\[R^2 = \frac{QS_{Modell}}{QS_{Total}} \hspace{.5cm}\]</span></p>
 <p>Das entspricht also dem bereits bekannten Determinationskoeffizienten, also der aufgeklärten Varianz.</p>
@@ -421,6 +425,7 @@ NA
 <p>mit $p = $ Anzahl der verwendeten Parameter <span class="math inline">\(b_0\)</span> und <span class="math inline">\(b_1\)</span>, also 2.</p>
 <p><strong><em>Teststatistik</em></strong></p>
 <p><span class="math display">\[F = \frac{MQS_{Modell}}{MQS_{Fehler}}\]</span></p>
+</div>
 </div>
 <div id="konfidenzintervalle" class="section level2 unnumbered hasAnchor">
 <h2>Konfidenzintervalle<a href="berechnung-des-modells-in-r.html#konfidenzintervalle" class="anchor-section" aria-label="Anchor link to header"></a></h2>
