@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Berechnung des Modells in R | Lineare Regression</title>
+  <title>4 Berechnung des Modells in R | Lineare Regression</title>
   <meta name="description" content="Einfache lineare Regression mit einem Prädiktor" />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Berechnung des Modells in R | Lineare Regression" />
+  <meta property="og:title" content="4 Berechnung des Modells in R | Lineare Regression" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="/Images/Cover.png" />
   <meta property="og:description" content="Einfache lineare Regression mit einem Prädiktor" />
   <meta name="github-repo" content="wgruber/LineareRegression" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Berechnung des Modells in R | Lineare Regression" />
+  <meta name="twitter:title" content="4 Berechnung des Modells in R | Lineare Regression" />
   
   <meta name="twitter:description" content="Einfache lineare Regression mit einem Prädiktor" />
   <meta name="twitter:image" content="/Images/Cover.png" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Walter Gruber" />
 
 
-<meta name="date" content="2025-03-23" />
+<meta name="date" content="2025-03-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -175,48 +175,50 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#vorwort"><i class="fa fa-check"></i>Vorwort</a></li>
 <li class="chapter" data-level="" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#ziele"><i class="fa fa-check"></i>Ziele</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="das-einfache-lineare-modell.html"><a href="das-einfache-lineare-modell.html"><i class="fa fa-check"></i>Das einfache lineare Modell</a>
+<li class="chapter" data-level="1" data-path="das-einfache-lineare-modell.html"><a href="das-einfache-lineare-modell.html"><i class="fa fa-check"></i><b>1</b> Das einfache lineare Modell</a>
 <ul>
-<li class="chapter" data-level="" data-path="das-einfache-lineare-modell.html"><a href="das-einfache-lineare-modell.html#fehlerterm"><i class="fa fa-check"></i>Fehlerterm</a></li>
+<li class="chapter" data-level="1.1" data-path="das-einfache-lineare-modell.html"><a href="das-einfache-lineare-modell.html#fehlerterm"><i class="fa fa-check"></i><b>1.1</b> Fehlerterm</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html"><i class="fa fa-check"></i>Modellvorhersage &amp; Interpretation</a>
+<li class="chapter" data-level="2" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html"><i class="fa fa-check"></i><b>2</b> Modellvorhersage &amp; Interpretation</a>
 <ul>
-<li class="chapter" data-level="" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#beispiel"><i class="fa fa-check"></i>Beispiel</a></li>
-<li class="chapter" data-level="" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#korrelationregression"><i class="fa fa-check"></i>Korrelation/Regression</a></li>
-<li class="chapter" data-level="" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#eigenschaften-der-gerade"><i class="fa fa-check"></i>Eigenschaften der Gerade</a></li>
-<li class="chapter" data-level="" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#beta-gewichte"><i class="fa fa-check"></i>Beta-Gewichte</a></li>
-<li class="chapter" data-level="" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#residuen"><i class="fa fa-check"></i>Residuen</a></li>
-<li class="chapter" data-level="" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#standardschätzfehler"><i class="fa fa-check"></i>Standardschätzfehler</a></li>
-<li class="chapter" data-level="" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#determinationskoeffizient"><i class="fa fa-check"></i>Determinationskoeffizient</a></li>
-<li class="chapter" data-level="" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#venn-diagramm"><i class="fa fa-check"></i>Venn Diagramm</a></li>
-<li class="chapter" data-level="" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#multiple-regression"><i class="fa fa-check"></i>Multiple Regression</a></li>
-<li class="chapter" data-level="" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#eigenschaften-des-determinationskoeffizienten"><i class="fa fa-check"></i>Eigenschaften des Determinationskoeffizienten</a></li>
-<li class="chapter" data-level="" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#ascombe-quartett"><i class="fa fa-check"></i>Ascombe-Quartett</a></li>
+<li class="chapter" data-level="2.1" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#beispiel"><i class="fa fa-check"></i><b>2.1</b> Beispiel</a></li>
+<li class="chapter" data-level="2.2" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#korrelationregression"><i class="fa fa-check"></i><b>2.2</b> Korrelation/Regression</a></li>
+<li class="chapter" data-level="2.3" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#eigenschaften-der-gerade"><i class="fa fa-check"></i><b>2.3</b> Eigenschaften der Gerade</a></li>
+<li class="chapter" data-level="2.4" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#beta-gewichte"><i class="fa fa-check"></i><b>2.4</b> Beta-Gewichte</a></li>
+<li class="chapter" data-level="2.5" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#residuen"><i class="fa fa-check"></i><b>2.5</b> Residuen</a></li>
+<li class="chapter" data-level="2.6" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#standardschätzfehler"><i class="fa fa-check"></i><b>2.6</b> Standardschätzfehler</a></li>
+<li class="chapter" data-level="2.7" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#determinationskoeffizient"><i class="fa fa-check"></i><b>2.7</b> Determinationskoeffizient</a></li>
+<li class="chapter" data-level="2.8" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#venn-diagramm"><i class="fa fa-check"></i><b>2.8</b> Venn Diagramm</a></li>
+<li class="chapter" data-level="2.9" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#multiple-regression"><i class="fa fa-check"></i><b>2.9</b> Multiple Regression</a></li>
+<li class="chapter" data-level="2.10" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#eigenschaften-des-determinationskoeffizienten"><i class="fa fa-check"></i><b>2.10</b> Eigenschaften des Determinationskoeffizienten</a></li>
+<li class="chapter" data-level="2.11" data-path="modellvorhersage-interpretation.html"><a href="modellvorhersage-interpretation.html#ascombe-quartett"><i class="fa fa-check"></i><b>2.11</b> Ascombe-Quartett</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="signifikanztests.html"><a href="signifikanztests.html"><i class="fa fa-check"></i>Signifikanztests</a>
+<li class="chapter" data-level="3" data-path="signifikanztests.html"><a href="signifikanztests.html"><i class="fa fa-check"></i><b>3</b> Signifikanztests</a>
 <ul>
-<li class="chapter" data-level="" data-path="signifikanztests.html"><a href="signifikanztests.html#voraussetzungen"><i class="fa fa-check"></i>Voraussetzungen</a></li>
-<li class="chapter" data-level="" data-path="signifikanztests.html"><a href="signifikanztests.html#graphisches-prüfen-der-voraussetzungen"><i class="fa fa-check"></i>Graphisches prüfen der Voraussetzungen</a></li>
+<li class="chapter" data-level="3.1" data-path="signifikanztests.html"><a href="signifikanztests.html#voraussetzungen"><i class="fa fa-check"></i><b>3.1</b> Voraussetzungen</a></li>
+<li class="chapter" data-level="3.2" data-path="signifikanztests.html"><a href="signifikanztests.html#hypothesen"><i class="fa fa-check"></i><b>3.2</b> Hypothesen</a></li>
+<li class="chapter" data-level="3.3" data-path="signifikanztests.html"><a href="signifikanztests.html#graphisches-prüfen-der-voraussetzungen"><i class="fa fa-check"></i><b>3.3</b> Graphisches prüfen der Voraussetzungen</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html"><i class="fa fa-check"></i>Berechnung des Modells in <strong>R</strong></a>
+<li class="chapter" data-level="4" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html"><i class="fa fa-check"></i><b>4</b> Berechnung des Modells in <strong>R</strong></a>
 <ul>
-<li class="chapter" data-level="" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#koeffizienten"><i class="fa fa-check"></i>Koeffizienten</a>
+<li class="chapter" data-level="4.1" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#koeffizienten"><i class="fa fa-check"></i><b>4.1</b> Koeffizienten</a>
 <ul>
-<li class="chapter" data-level="" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#formale-interpretation"><i class="fa fa-check"></i>Formale Interpretation</a></li>
-<li class="chapter" data-level="" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#inhaltliche-interpretation"><i class="fa fa-check"></i>Inhaltliche Interpretation</a></li>
+<li class="chapter" data-level="4.1.1" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#formale-interpretation"><i class="fa fa-check"></i><b>4.1.1</b> Formale Interpretation</a></li>
+<li class="chapter" data-level="4.1.2" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#inhaltliche-interpretation"><i class="fa fa-check"></i><b>4.1.2</b> Inhaltliche Interpretation</a></li>
+<li class="chapter" data-level="4.1.3" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#standardfehler-der-regressionskoeffizienten"><i class="fa fa-check"></i><b>4.1.3</b> Standardfehler der Regressionskoeffizienten</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#hypothesen"><i class="fa fa-check"></i>Hypothesen</a></li>
-<li class="chapter" data-level="" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#bewertung-des-modells---anova"><i class="fa fa-check"></i>Bewertung des Modells - ANOVA</a>
+<li class="chapter" data-level="4.2" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#bewertung-des-modells---anova"><i class="fa fa-check"></i><b>4.2</b> Bewertung des Modells - ANOVA</a>
 <ul>
-<li class="chapter" data-level="" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#erläuterung-der-quadratsummen-in-der-anova-tabelle"><i class="fa fa-check"></i>Erläuterung der Quadratsummen in der ANOVA-Tabelle</a></li>
+<li class="chapter" data-level="4.2.1" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#erläuterung-der-quadratsummen-in-der-anova-tabelle"><i class="fa fa-check"></i><b>4.2.1</b> Erläuterung der Quadratsummen in der ANOVA-Tabelle</a></li>
+<li class="chapter" data-level="4.2.2" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#teststatistik"><i class="fa fa-check"></i><b>4.2.2</b> Teststatistik</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#konfidenzintervalle"><i class="fa fa-check"></i>Konfidenzintervalle</a></li>
+<li class="chapter" data-level="4.3" data-path="berechnung-des-modells-in-r.html"><a href="berechnung-des-modells-in-r.html#konfidenzintervalle"><i class="fa fa-check"></i><b>4.3</b> Konfidenzintervalle</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="kategorieller-prädiktor.html"><a href="kategorieller-prädiktor.html"><i class="fa fa-check"></i>Kategorieller Prädiktor</a>
+<li class="chapter" data-level="5" data-path="kategorieller-prädiktor.html"><a href="kategorieller-prädiktor.html"><i class="fa fa-check"></i><b>5</b> Kategorieller Prädiktor</a>
 <ul>
-<li class="chapter" data-level="" data-path="kategorieller-prädiktor.html"><a href="kategorieller-prädiktor.html#mehrstufiger-kategorieller-prädiktoren"><i class="fa fa-check"></i>Mehrstufige(r) kategorielle(r) Prädiktor(en)</a></li>
-<li class="chapter" data-level="" data-path="kategorieller-prädiktor.html"><a href="kategorieller-prädiktor.html#dummy-kodierung"><i class="fa fa-check"></i>Dummy Kodierung</a></li>
-<li class="chapter" data-level="" data-path="kategorieller-prädiktor.html"><a href="kategorieller-prädiktor.html#modelle-mit-kategoriellen-variablen"><i class="fa fa-check"></i>Modelle mit kategoriellen Variablen</a></li>
+<li class="chapter" data-level="5.1" data-path="kategorieller-prädiktor.html"><a href="kategorieller-prädiktor.html#mehrstufiger-kategorieller-prädiktoren"><i class="fa fa-check"></i><b>5.1</b> Mehrstufige(r) kategorielle(r) Prädiktor(en)</a></li>
+<li class="chapter" data-level="5.2" data-path="kategorieller-prädiktor.html"><a href="kategorieller-prädiktor.html#dummy-kodierung"><i class="fa fa-check"></i><b>5.2</b> Dummy Kodierung</a></li>
+<li class="chapter" data-level="5.3" data-path="kategorieller-prädiktor.html"><a href="kategorieller-prädiktor.html#modelle-mit-kategoriellen-variablen"><i class="fa fa-check"></i><b>5.3</b> Modelle mit kategoriellen Variablen</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referenzen.html"><a href="referenzen.html"><i class="fa fa-check"></i>Referenzen</a></li>
 </ul>
@@ -236,15 +238,15 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="berechnung-des-modells-in-r" class="section level1 unnumbered hasAnchor">
-<h1>Berechnung des Modells in <strong>R</strong><a href="berechnung-des-modells-in-r.html#berechnung-des-modells-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="berechnung-des-modells-in-r" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Berechnung des Modells in <strong>R</strong><a href="berechnung-des-modells-in-r.html#berechnung-des-modells-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Die Berechnung eines linearen Modells mit R ist mit der Funktion:</p>
 <p><span class="math display">\[lm(Y \sim X, data = df)\]</span></p>
 <p>denkbar einfach. Die Funktion <span class="math inline">\(lm()\)</span> <strong>l</strong>inear <strong>m</strong>odel erfordert eine <em>Formel</em>, also die Angabe der Kriteriumsvariable und der Prädiktorvariable(n), sowie den Datensatz der zum Trainieren des Modells verwendet werden soll. In R steht die Tilde (<span class="math inline">\(\sim\)</span>) in einer Formel für die Zuordnung zwischen der abhängigen und den unabhängigen Variablen.</p>
 <p>Für das bereist verwendete Beispiel mit dem Lernerfolg und der Lerndauer würde die Berechnung der Koeffizienten in R konkret durch folgenden Aufruf durchgeführt werden:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="berechnung-des-modells-in-r.html#cb1-1" tabindex="-1"></a>  lm_fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(LE <span class="sc">~</span> LD, <span class="at">data =</span> df)</span></code></pre></div>
-<div id="koeffizienten" class="section level2 unnumbered hasAnchor">
-<h2>Koeffizienten<a href="berechnung-des-modells-in-r.html#koeffizienten" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="koeffizienten" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Koeffizienten<a href="berechnung-des-modells-in-r.html#koeffizienten" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Nachfolgende Tabelle zeigt die berechneten Regressionkoeffizienten:</p>
 <table class="table table-striped table-hover table-condensed table-responsive" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
@@ -312,27 +314,25 @@ LD
 </tr>
 </tbody>
 </table>
-<div id="formale-interpretation" class="section level3 unnumbered hasAnchor">
-<h3>Formale Interpretation<a href="berechnung-des-modells-in-r.html#formale-interpretation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="formale-interpretation" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Formale Interpretation<a href="berechnung-des-modells-in-r.html#formale-interpretation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Die Gerade schneidet die y-Achse bei einem Wert von 34.93. Der Standardfehler beträgt 1.57, die Tesstatistik <span class="math inline">\(t = 22.3, p &lt; .001\)</span>, womit sich der Interzept signifikant von 0 unterscheidet.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
 <p>Die Steigung beträgt 1.47, die Testatistik <span class="math inline">\(t = 12.9, p &lt; .001\)</span> ist ebenfalls signifikant. Der standardisierte Steigungskoeffizient <span class="math inline">\(B = .79\)</span> entspricht der Korrelation der beiden Variablen. Der sich daraus berechenbare Determinationskoeffizient <span class="math inline">\(R^2 = .63\)</span>. Damit klärt die Lerndauer 63% der Variabilität im Lernerfolg auf.</p>
 </div>
-<div id="inhaltliche-interpretation" class="section level3 unnumbered hasAnchor">
-<h3>Inhaltliche Interpretation<a href="berechnung-des-modells-in-r.html#inhaltliche-interpretation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="inhaltliche-interpretation" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Inhaltliche Interpretation<a href="berechnung-des-modells-in-r.html#inhaltliche-interpretation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Die Inhaltliche Interpretation ist für den Bericht der Ergebnisse die wichtigere. Im vorliegenden Fall würde man bei einer Lerndauer von 0 Stunden 34.9% Prozent erreichen. Mit jeder zusätzlichen Lernstunde erhöht sich der Lernerfolg um 1.47%.</p>
 </div>
-</div>
-<div id="hypothesen" class="section level2 unnumbered hasAnchor">
-<h2>Hypothesen<a href="berechnung-des-modells-in-r.html#hypothesen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="standardfehler-der-regressionskoeffizienten" class="section level3 hasAnchor" number="4.1.3">
+<h3><span class="header-section-number">4.1.3</span> Standardfehler der Regressionskoeffizienten<a href="berechnung-des-modells-in-r.html#standardfehler-der-regressionskoeffizienten" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Von Bedeutung ist die statistische Absicherung der Steigung <span class="math inline">\(b_1\)</span>. Bei jeder Wiederholung einer Untersuchung wird sich mit sehr großer Wahrscheinlichkeit der berechnete <span class="math inline">\(b_1\)</span> ändern. Sind die Annahmen des Regressionsmodels (Linearität, Homoskedastizität, Normalverteilung der Residuen) erfüllt, dann ist die Stichprobenverteilung der <span class="math inline">\(b_1\)</span> normalverteilt.</p>
 <p>Der Mittelwert dieser Verteilung ist dann die unbekannte (wahre) Steigung <span class="math inline">\(\beta\)</span>. Ebenfalls unbekannt ist die Standardabweichung der Stichprobenverteilung <span class="math inline">\(\sigma_b\)</span> (= Standardfehler der Steigung). Diese kann jedoch über den Standardfehler der Steigung <span class="math inline">\(s_b\)</span> geschätzt werden (Details siehe Literatur). Es gilt:</p>
 <p><span class="math display">\[s_b = \frac{s_e}{\sqrt{ \sum_{i=1}^{n} (x_i - \bar{x})^2}}\]</span></p>
-<p>Die Nullhypothese lautet:</p>
-<p><span class="math display">\[H_0: \beta = \beta_0\]</span></p>
 </div>
-<div id="bewertung-des-modells---anova" class="section level2 unnumbered hasAnchor">
-<h2>Bewertung des Modells - ANOVA<a href="berechnung-des-modells-in-r.html#bewertung-des-modells---anova" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Um zu testen, ob das Modell sich im Vergleich zum signifikant unterscheidet, also ob es hinsichtlich der aufgeklärten Varianz der abhängigen Variablen bedeutsam besser ist, kann man die folgende ANOVA-Tabelle verwenden.</p>
+</div>
+<div id="bewertung-des-modells---anova" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Bewertung des Modells - ANOVA<a href="berechnung-des-modells-in-r.html#bewertung-des-modells---anova" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Um zu testen, ob das Modell sich im Vergleich zum <em>Mittelwertsmodell</em> signifikant unterscheidet, also ob es hinsichtlich der aufgeklärten Varianz der abhängigen Variablen bedeutsam besser ist, kann man die folgende ANOVA-Tabelle verwenden.</p>
 <table class="table table-striped table-hover table-condensed table-responsive" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -401,15 +401,15 @@ NA
 </table>
 <p>Wenn die ANOVA ein signifikantes Ergebnis liefert, wie es in vorliegender Fall auch zutrifft (<span class="math inline">\(F(1,98) = 166, p &lt; .001\)</span>), kann man von einer signifikant besseren Modell als das Mittelwertsmodell ausgehen.</p>
 <div class="float">
-<img src="Images/Regression.png" style="width:70.0%" alt="Quadratsummenzerlegung: für die Berechnung der ANOVA werden verschieden Quadratsummen (QS) berechnet. Die Bedeutung dieser QS$* wird durch diese Darstellung verdeutlicht." />
-<div class="figcaption"><strong>Quadratsummenzerlegung</strong>: für die Berechnung der ANOVA werden verschieden Quadratsummen (<em>QS</em>) berechnet. Die Bedeutung dieser <em>QS</em>$* wird durch diese Darstellung verdeutlicht.</div>
+<img src="Images/Regression.png" style="width:70.0%" alt="Quadratsummenzerlegung: für die Berechnung der ANOVA werden verschieden Quadratsummen (QS) berechnet. Die Bedeutung dieser QS wird durch diese Darstellung verdeutlicht." />
+<div class="figcaption"><strong>Quadratsummenzerlegung</strong>: für die Berechnung der ANOVA werden verschieden Quadratsummen (<em>QS</em>) berechnet. Die Bedeutung dieser <em><span class="math inline">\(QS\)</span></em> wird durch diese Darstellung verdeutlicht.</div>
 </div>
-<div id="erläuterung-der-quadratsummen-in-der-anova-tabelle" class="section level3 unnumbered hasAnchor">
-<h3>Erläuterung der Quadratsummen in der ANOVA-Tabelle<a href="berechnung-des-modells-in-r.html#erläuterung-der-quadratsummen-in-der-anova-tabelle" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="erläuterung-der-quadratsummen-in-der-anova-tabelle" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Erläuterung der Quadratsummen in der ANOVA-Tabelle<a href="berechnung-des-modells-in-r.html#erläuterung-der-quadratsummen-in-der-anova-tabelle" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li>Totale-Quadratsumme (LD sumsq + Residuals sum_Sq): die quadrierte Summe der Differenzen zwischen beobachteten Werten und dem Mittelwert, also <span class="math inline">\(QS_{Total} = \sum (y_i - \bar{y})^2\)</span></li>
-<li>Fehler-Quadratsumme (Residual sumsq): die Summe der Differenzen zwischen beobachteten Werten und vorhergesagten Werten, also <span class="math inline">\(QS_{Fehler} = \sum (y_i - \hat{y}_i)^2\)</span></li>
-<li>Modell-Quadratsumme (LD sumsq): die Summe der Differenzen zwischen vorhergesagten Werten und dem Mittelwert, also <span class="math inline">\(QS_{Modell} = \sum (\hat{y}_i - \bar{y})^2\)</span></li>
+<li>Totale-Quadratsumme (<span class="math inline">\(QS_{Total}\)</span>): die quadrierte Summe der Differenzen zwischen beobachteten Werten und dem Mittelwert, also <span class="math inline">\(QS_{Total} = \sum (y_i - \bar{y})^2\)</span></li>
+<li>Fehler-Quadratsumme (<span class="math inline">\(QS_{Fehler}\)</span>): die Summe der Differenzen zwischen beobachteten Werten und vorhergesagten Werten, also <span class="math inline">\(QS_{Fehler} = \sum (y_i - \hat{y}_i)^2\)</span></li>
+<li>Modell-Quadratsumme (<span class="math inline">\(QS_{Modell} = QS_{LD}\)</span>): die Summe der Differenzen zwischen vorhergesagten Werten und dem Mittelwert, also <span class="math inline">\(QS_{Modell} = \sum (\hat{y}_i - \bar{y})^2\)</span></li>
 </ul>
 <p>Mit den Ergebnissen der ANOVA lassen sich folgende Fragen beantworten:</p>
 <ol style="list-style-type: decimal">
@@ -421,14 +421,16 @@ NA
 <p>Das entspricht also dem bereits bekannten Determinationskoeffizienten, also der aufgeklärten Varianz.</p>
 <p><strong><em>Frage 2</em></strong></p>
 <p><span class="math display">\[MQS_{Modell} = \frac{QS_{Modell}}{df_{Modell}} \textrm{ und } MQS_{Fehler} = \frac{QS_{Fehler}}{df_{Fehler}}\]</span>
-<span class="math display">\[df_{Modell} = 1 \\ df_{Fehler} = N - p\]</span></p>
-<p>mit $p = $ Anzahl der verwendeten Parameter <span class="math inline">\(b_0\)</span> und <span class="math inline">\(b_1\)</span>, also 2.</p>
-<p><strong><em>Teststatistik</em></strong></p>
+<span class="math display">\[df_{Modell} = 1 \\ df_{Fehler} = N - p\]</span>
+mit <span class="math inline">\(p\)</span> Anzahl der verwendeten Parameter <span class="math inline">\(b_0\)</span> und <span class="math inline">\(b_1\)</span>, also 2.</p>
+</div>
+<div id="teststatistik" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Teststatistik<a href="berechnung-des-modells-in-r.html#teststatistik" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><span class="math display">\[F = \frac{MQS_{Modell}}{MQS_{Fehler}}\]</span></p>
 </div>
 </div>
-<div id="konfidenzintervalle" class="section level2 unnumbered hasAnchor">
-<h2>Konfidenzintervalle<a href="berechnung-des-modells-in-r.html#konfidenzintervalle" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="konfidenzintervalle" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Konfidenzintervalle<a href="berechnung-des-modells-in-r.html#konfidenzintervalle" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Für den Interzept gilt:</p>
 <p><span class="math display">\[\textrm{untere Grenze} = b_0 - t_{df;1-\alpha/2} \cdot s_b\]</span>
 <span class="math display">\[\textrm{obere Grenze}  = b_0 + t_{df;1-\alpha/2} \cdot s_b\]</span></p>

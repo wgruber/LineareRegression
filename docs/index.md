@@ -1,13 +1,14 @@
 ---
 title: "Lineare Regression"
 author: "Walter Gruber"
-date: "2025-03-23"
+date: "2025-03-31"
 description: "Einfache lineare Regression mit einem Prädiktor"
 cover-image: "Images/Cover.png"
 github-repo: wgruber/LineareRegression
 site: bookdown::bookdown_site
 output:
   bookdown::gitbook: default
+  number_sections: false
 bibliography: "bibliography.bib"
 biblio-style: "apalike"
 link-citations: true
